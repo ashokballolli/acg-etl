@@ -9,6 +9,7 @@ import psycopg2.extras as extr
 import logging
 import sys
 import os
+from os import environ
 import datetime
 from utils.log_utils import setup_logging
 
@@ -50,11 +51,11 @@ class db_utils():
 
         try:
             conn = None
-            conn = psycopg2.connect(user=con_db['username'],
-                                    password=con_db['password'],
-                                    host=con_db['host'],
-                                    port=con_db['port'],
-                                    database=con_db['name'])
+            conn = psycopg2.connect(user=environ.get('rds_username') or con_db['username'],
+                                    password=environ.get('rds_password') or con_db['password'],
+                                    host=environ.get('rds_host') or con_db['host'],
+                                    port=environ.get('rds_port') or con_db['port'],
+                                    database=environ.get('rds_database_name') or con_db['name'])
         except (Exception, psycopg2.Error) as error:
             logging.debug("Error while connecting to PostgreSQL " + str(error))
             print("Error while connecting to PostgreSQL " + str(error))
