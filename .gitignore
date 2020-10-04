@@ -1,6 +1,8 @@
 venv/
 .idea
 logs
+resources/config.yml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.pyc
@@ -10,6 +12,7 @@ __pycache__/
 **/__pycache__/
 # C extensions
 *.so
+
 
 # Distribution / packaging
 .Python
