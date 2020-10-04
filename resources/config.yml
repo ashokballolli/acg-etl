@@ -15,4 +15,4 @@ data:
 
 sns:
   arn: replace_aws_arn_here
-  send_notification: False
+  send_notification: True
