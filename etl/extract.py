@@ -3,7 +3,7 @@ import os
 import sys
 import yaml
 
-CONFIG_FILE = os.path.join(sys.path[0], '../resources/config.yml')
+CONFIG_FILE = os.path.join(sys.path[0], './resources/config.yml')
 
 
 def extract_covid_data():

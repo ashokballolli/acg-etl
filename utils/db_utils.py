@@ -13,7 +13,7 @@ from os import environ
 import datetime
 from utils.log_utils import setup_logging
 
-CONFIG_FILE = os.path.join(sys.path[0], '../resources/config.yml')
+CONFIG_FILE = os.path.join(sys.path[0], './resources/config.yml')
 setup_logging(CONFIG_FILE)
 
 def nan_to_null(f,

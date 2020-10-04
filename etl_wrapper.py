@@ -1,6 +1,6 @@
-from extract import extract_covid_data
-from load import load_to_dwh
-from transform import transform
+from etl.extract import extract_covid_data
+from etl.load import load_to_dwh
+from etl.transform import transform
 
 
 def load_data(event, context):

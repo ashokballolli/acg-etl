@@ -4,7 +4,7 @@ import sys
 from utils.db_utils import db_utils
 from utils.log_utils import setup_logging
 
-CONFIG_FILE = os.path.join(sys.path[0], '../resources/config.yml')
+CONFIG_FILE = os.path.join(sys.path[0], './resources/config.yml')
 setup_logging(CONFIG_FILE)
 
 
