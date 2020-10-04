@@ -58,7 +58,6 @@ class db_utils():
                                     database=environ.get('rds_database_name') or con_db['name'])
         except (Exception, psycopg2.Error) as error:
             logging.debug("Error while connecting to PostgreSQL " + str(error))
-            print("Error while connecting to PostgreSQL " + str(error))
             raise error
 
         finally:
@@ -71,10 +70,8 @@ class db_utils():
             if (conn):
                 conn.close()
                 logging.debug("Connection closed")
-                # print("Connection closed")
             else:
                 logging.debug("Connection was not present with the database")
-                print("Connection was not present with the database")
         except (Exception, psycopg2.Error) as error:
             logging.debug("Error while closing connection " + str(error))
             raise error
@@ -120,7 +117,6 @@ class db_utils():
 
                 cur = conn.cursor()
                 extr.execute_batch(cur, insert_stmt, df.values)
-                # print("first print: " + str(cur.fetchone()[0]))
                 if return_id != '':
                     returned_col = cur.fetchone()[0]
                 conn.commit()
@@ -133,7 +129,6 @@ class db_utils():
                     return returned_col
             else:
                 logging.debug("{}.{} has no data to insert".format(schema, table_name))
-                # print("{}.{} has no data to insert".format(schema, table_name))
                 return
         except (Exception, psycopg2.Error) as error:
             logging.debug("Error while refreshing " + schema + "." + table_name + " " + str(error))
@@ -153,11 +148,9 @@ class db_utils():
             cursor.execute(truncate_query)
             conn.commit()
             logging.debug("{}.{} Truncated".format(schema, table_name))
-            # print("{} Truncated".format(table_name))
         except (Exception, psycopg2.Error) as error:
             logging.debug("Error while truncating table " + str(error))
             self.close_dwh_conn(conn)
-            print("Error while truncating table " + str(error))
             raise error
 
     def executeQuery(self, conn, query, DB, data=None):
@@ -181,10 +174,28 @@ class db_utils():
             except (Exception, psycopg2.Error) as error:
                 logging.debug("Error while running query " + str(error) + "\
     					{}".format(query))
-                print("Error while running query " + str(error) + "\
-    					{}".format(query))
                 raise error
 
+    def executeQuery01(self, conn, query, DB, data=None):
+        """
+        1. Checks if the connection exists, if not create one.
+        2. Runs the query
+        """
+
+        if (not conn):
+            conn = self.get_dwh_conn(DB)
+        else:
+            try:
+                cursor = conn.cursor()
+                if data:
+                    cursor.execute(query, data)
+                else:
+                    cursor.execute(query)
+                conn.commit()
+            except (Exception, psycopg2.Error) as error:
+                logging.debug("Error while running query " + str(error) + "\
+    					{}".format(query))
+                raise error
     def create_table(self, conn, query, DB):
         """
         1. Checks if the connection exists, if not create one.
@@ -200,8 +211,6 @@ class db_utils():
                 conn.commit()
             except (Exception, psycopg2.Error) as error:
                 logging.debug("Error while running query " + str(error) + "\
-    					{}".format(query))
-                print("Error while running query " + str(error) + "\
     					{}".format(query))
                 raise error
 
