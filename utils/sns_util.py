@@ -12,7 +12,7 @@ setup_logging(CONFIG_FILE)
 
 sns = yaml.load(open(CONFIG_FILE), Loader=yaml.BaseLoader)['sns']
 sns_arn = environ.get('sns_arn') or sns['arn']
-send_notification = eval(environ.get('send_notification')) or eval(sns['send_notification'])
+send_notification = eval(environ.get('send_notification')) if environ.get('send_notification') else eval(sns['send_notification'])
 
 def send_sns_message(subject, message):
     try:
