@@ -1,0 +1,17 @@
+log:
+  file_path: ../logs/etl.log
+  level: DEBUG
+
+dwh:
+  host: localhost
+  name: replace_database_name_here
+  port: 5432
+  username: replace_username_here
+  password: replace_passwrod_here
+
+data:
+  url_covid_nyt_data: https://raw.githubusercontent.com/nytimes/covid-19-data/master/us.csv
+  url_covid_jh_data: https://raw.githubusercontent.com/datasets/covid-19/master/data/time-series-19-covid-combined.csv?opt_id=oeu1601644847887r0.5925355693824239
+
+sns:
+  arn: replace_aws_arn_here
