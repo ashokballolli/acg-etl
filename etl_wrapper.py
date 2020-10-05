@@ -18,12 +18,11 @@ def load_data(event, context):
         url_covid_jh_data = data['url_covid_jh_data']
         dwh_conn = db_utils.get_dwh_conn('dwh')
 
+        df_nyt_data, df_jh_data = extract_covid_data(url_covid_nyt_data, url_covid_jh_data)
+        df_transformed = transform(df_nyt_data, df_jh_data)
+        load_to_dwh(df_transformed, dwh_conn)
     except (Exception, psycopg2.Error) as error:
         notify_etl_status(False, str(error))
-
-    df_nyt_data, df_jh_data = extract_covid_data(url_covid_nyt_data, url_covid_jh_data)
-    df_transformed = transform(df_nyt_data, df_jh_data)
-    load_to_dwh(df_transformed, dwh_conn)
 
 
 load_data("", "")

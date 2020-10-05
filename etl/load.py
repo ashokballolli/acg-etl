@@ -30,7 +30,7 @@ def is_it_first_run(dwh_conn):
 
 
 def create_table(dwh_conn):
-    query = """CREATE TABLE covid.daily_stats (rep_date date PRIMARY KEY, cases integer, deaths integer, recovered integer)"""
+    query = """CREATE TABLE IF NOT EXISTS covid.daily_stats (rep_date date PRIMARY KEY, cases integer, deaths integer, recovered integer)"""
     try:
         db_utils.create_table(dwh_conn, query, 'dwh')
     except (Exception, psycopg2.Error) as error:
@@ -62,5 +62,7 @@ def load_to_dwh(df_transformed, dwh_conn):
         if df_size:
             notify_etl_status(True, df_size)
 
+        return df_size
     except (Exception, psycopg2.Error) as error:
         notify_etl_status(False, str(error))
+        raise error
