@@ -7,25 +7,25 @@ on:
   pull_request:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [3.7]
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Test with unittest
-        run: |
-          python -m unittest discover test
+#  build:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        python-version: [3.7]
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Set up Python ${{ matrix.python-version }}
+#        uses: actions/setup-python@v2
+#        with:
+#          python-version: ${{ matrix.python-version }}
+#      - name: Install dependencies
+#        run: |
+#          python -m pip install --upgrade pip
+#          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+#      - name: Test with unittest
+#        run: |
+#          python -m unittest discover test
 
   terraform:
     name: 'Terraform'
@@ -71,11 +71,11 @@ jobs:
       run: terraform fmt -check
 
     # Generates an execution plan for Terraform
-    - name: Terraform Plan
-      id: plan
-      run: |
-          cd iac-terraform/setup
-          terraform plan -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}'
+#    - name: Terraform Plan
+#      id: plan
+#      run: |
+#          cd iac-terraform/setup
+#          terraform plan -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}'
 
       # On push to master, build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
@@ -99,8 +99,8 @@ jobs:
           ls -la ~/
           mkdir -p ~/acg-etl-lib/python/lib/python3.7/site-packages
           cd ~/acg-etl-lib/python/lib/python3.7/site-packages
-          python -m pip install --upgrade pip
-          if [ -f ${{env.project-home-directory}}/requirements.txt ]; then python3.7 -m pip install -r ${{env.project-home-directory}}/requirements.txt  -t . ; fi
+#          python -m pip install --upgrade pip
+          python3.7 -m pip install -r ${{env.project-home-directory}}/requirements.txt  -t .
           cd ~/acg-etl-lib
           zip -r python.zip .
           ls -la
