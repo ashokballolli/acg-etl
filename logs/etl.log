@@ -1,0 +1,601 @@
+2020-10-04 13:24:42,693 - DEBUG - Establishing connection to 8pus
+2020-10-04 13:24:42,799 - DEBUG - covid.daily_stats has no data to insert
+2020-10-04 13:24:52,132 - DEBUG - Establishing connection to 8pus
+2020-10-04 13:24:52,168 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 14:40:18,055 - DEBUG - Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2020-10-04 14:40:18,057 - DEBUG - Changing event name from before-call.apigateway to before-call.api-gateway
+2020-10-04 14:40:18,058 - DEBUG - Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2020-10-04 14:40:18,060 - DEBUG - Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2020-10-04 14:40:18,060 - DEBUG - Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2020-10-04 14:40:18,061 - DEBUG - Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2020-10-04 14:40:18,062 - DEBUG - Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2020-10-04 14:40:18,065 - DEBUG - Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2020-10-04 14:40:18,065 - DEBUG - Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2020-10-04 14:40:18,065 - DEBUG - Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2020-10-04 14:40:18,065 - DEBUG - Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2020-10-04 14:40:18,097 - DEBUG - Looking for credentials via: env
+2020-10-04 14:40:18,098 - DEBUG - Looking for credentials via: assume-role
+2020-10-04 14:40:18,098 - DEBUG - Looking for credentials via: assume-role-with-web-identity
+2020-10-04 14:40:18,098 - DEBUG - Looking for credentials via: sso
+2020-10-04 14:40:18,098 - DEBUG - Looking for credentials via: shared-credentials-file
+2020-10-04 14:40:18,099 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2020-10-04 14:40:18,100 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/endpoints.json
+2020-10-04 14:40:18,107 - DEBUG - Event choose-service-name: calling handler <function handle_service_name_alias at 0x11583c9e0>
+2020-10-04 14:40:18,153 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/sns/2010-03-31/service-2.json
+2020-10-04 14:40:18,156 - DEBUG - Event creating-client-class.sns: calling handler <function add_generate_presigned_url at 0x1157ec320>
+2020-10-04 14:40:18,175 - DEBUG - Setting sns timeout as (60, 60)
+2020-10-04 14:40:18,176 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/_retry.json
+2020-10-04 14:40:18,177 - DEBUG - Registering retry handlers for service: sns
+2020-10-04 14:40:18,178 - DEBUG - Event before-parameter-build.sns.Publish: calling handler <function generate_idempotent_uuid at 0x1158724d0>
+2020-10-04 14:40:18,178 - DEBUG - Event before-call.sns.Publish: calling handler <function inject_api_version_header_if_needed at 0x115878d40>
+2020-10-04 14:40:18,178 - DEBUG - Making request for OperationModel(name=Publish) with params: {'url_path': '/', 'query_string': '', 'method': 'POST', 'headers': {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': 'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11'}, 'body': {'Action': 'Publish', 'Version': '2010-03-31', 'TopicArn': 'arn:aws:sns:eu-central-1:212577831031:sns-acg-etl', 'Message': 'Test SNS notification'}, 'url': 'https://sns.eu-central-1.amazonaws.com/', 'context': {'client_region': 'eu-central-1', 'client_config': <botocore.config.Config object at 0x117483150>, 'has_streaming_input': False, 'auth_type': None}}
+2020-10-04 14:40:18,179 - DEBUG - Event request-created.sns.Publish: calling handler <bound method RequestSigner.handler of <botocore.signers.RequestSigner object at 0x117483110>>
+2020-10-04 14:40:18,179 - DEBUG - Event choose-signer.sns.Publish: calling handler <function set_operation_specific_signer at 0x1158723b0>
+2020-10-04 14:40:18,180 - DEBUG - Calculating signature using v4 auth.
+2020-10-04 14:40:18,180 - DEBUG - CanonicalRequest:
+POST
+/
+
+content-type:application/x-www-form-urlencoded; charset=utf-8
+host:sns.eu-central-1.amazonaws.com
+x-amz-date:20201004T124018Z
+
+content-type;host;x-amz-date
+1b4d2eac8224bddad02ff1650a9765539d9ab88ba1fc0cc91f25eb0c4e54f994
+2020-10-04 14:40:18,180 - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20201004T124018Z
+20201004/eu-central-1/sns/aws4_request
+60f136ad8acbacbca58f00b440af86d9892b56896bcef3f8896000d428625549
+2020-10-04 14:40:18,180 - DEBUG - Signature:
+65ab008f0fb267da5825a97c6bac44df1e94d7f24e7b4b5ce7a82a91783f5cd1
+2020-10-04 14:40:18,180 - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=POST, url=https://sns.eu-central-1.amazonaws.com/, headers={'Content-Type': b'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': b'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11', 'X-Amz-Date': b'20201004T124018Z', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIATC7VAJB347YGSSS3/20201004/eu-central-1/sns/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=65ab008f0fb267da5825a97c6bac44df1e94d7f24e7b4b5ce7a82a91783f5cd1', 'Content-Length': '132'}>
+2020-10-04 14:40:18,181 - DEBUG - Starting new HTTPS connection (1): sns.eu-central-1.amazonaws.com:443
+2020-10-04 14:40:18,398 - DEBUG - https://sns.eu-central-1.amazonaws.com:443 "POST / HTTP/1.1" 200 294
+2020-10-04 14:40:18,398 - DEBUG - Response headers: {'x-amzn-RequestId': '922fade0-8472-5034-a812-fa1340806013', 'Content-Type': 'text/xml', 'Content-Length': '294', 'Date': 'Sun, 04 Oct 2020 12:40:18 GMT'}
+2020-10-04 14:40:18,398 - DEBUG - Response body:
+b'<PublishResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">\n  <PublishResult>\n    <MessageId>19ffbc4a-b1fe-5a8f-b544-ebb9750c1aa8</MessageId>\n  </PublishResult>\n  <ResponseMetadata>\n    <RequestId>922fade0-8472-5034-a812-fa1340806013</RequestId>\n  </ResponseMetadata>\n</PublishResponse>\n'
+2020-10-04 14:40:18,399 - DEBUG - Event needs-retry.sns.Publish: calling handler <botocore.retryhandler.RetryHandler object at 0x117483210>
+2020-10-04 14:40:18,399 - DEBUG - No retry needed.
+2020-10-04 14:49:00,619 - DEBUG - Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2020-10-04 14:49:00,621 - DEBUG - Changing event name from before-call.apigateway to before-call.api-gateway
+2020-10-04 14:49:00,622 - DEBUG - Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2020-10-04 14:49:00,624 - DEBUG - Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2020-10-04 14:49:00,624 - DEBUG - Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2020-10-04 14:49:00,625 - DEBUG - Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2020-10-04 14:49:00,626 - DEBUG - Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2020-10-04 14:49:00,629 - DEBUG - Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2020-10-04 14:49:00,629 - DEBUG - Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2020-10-04 14:49:00,629 - DEBUG - Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2020-10-04 14:49:00,629 - DEBUG - Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2020-10-04 14:49:00,655 - DEBUG - Looking for credentials via: env
+2020-10-04 14:49:00,655 - DEBUG - Looking for credentials via: assume-role
+2020-10-04 14:49:00,655 - DEBUG - Looking for credentials via: assume-role-with-web-identity
+2020-10-04 14:49:00,655 - DEBUG - Looking for credentials via: sso
+2020-10-04 14:49:00,655 - DEBUG - Looking for credentials via: shared-credentials-file
+2020-10-04 14:49:00,656 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2020-10-04 14:49:00,657 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/endpoints.json
+2020-10-04 14:49:00,664 - DEBUG - Event choose-service-name: calling handler <function handle_service_name_alias at 0x11b7fb8c0>
+2020-10-04 14:49:00,704 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/sns/2010-03-31/service-2.json
+2020-10-04 14:49:00,707 - DEBUG - Event creating-client-class.sns: calling handler <function add_generate_presigned_url at 0x11b7aa200>
+2020-10-04 14:49:00,732 - DEBUG - Setting sns timeout as (60, 60)
+2020-10-04 14:49:00,734 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/_retry.json
+2020-10-04 14:49:00,734 - DEBUG - Registering retry handlers for service: sns
+2020-10-04 14:49:00,735 - DEBUG - Event before-parameter-build.sns.Publish: calling handler <function generate_idempotent_uuid at 0x11b8323b0>
+2020-10-04 14:49:00,735 - DEBUG - Event before-call.sns.Publish: calling handler <function inject_api_version_header_if_needed at 0x11b836c20>
+2020-10-04 14:49:00,736 - DEBUG - Making request for OperationModel(name=Publish) with params: {'url_path': '/', 'query_string': '', 'method': 'POST', 'headers': {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': 'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11'}, 'body': {'Action': 'Publish', 'Version': '2010-03-31', 'TopicArn': 'arn:aws:sns:eu-central-1:212577831031:sns-acg-etl', 'Subject': '[ACG-ETL] alert - 04-10-2020 14:49:00', 'Message': 'Test SNS notification'}, 'url': 'https://sns.eu-central-1.amazonaws.com/', 'context': {'client_region': 'eu-central-1', 'client_config': <botocore.config.Config object at 0x11d4252d0>, 'has_streaming_input': False, 'auth_type': None}}
+2020-10-04 14:49:00,736 - DEBUG - Event request-created.sns.Publish: calling handler <bound method RequestSigner.handler of <botocore.signers.RequestSigner object at 0x11d425290>>
+2020-10-04 14:49:00,736 - DEBUG - Event choose-signer.sns.Publish: calling handler <function set_operation_specific_signer at 0x11b832290>
+2020-10-04 14:49:00,737 - DEBUG - Calculating signature using v4 auth.
+2020-10-04 14:49:00,737 - DEBUG - CanonicalRequest:
+POST
+/
+
+content-type:application/x-www-form-urlencoded; charset=utf-8
+host:sns.eu-central-1.amazonaws.com
+x-amz-date:20201004T124900Z
+
+content-type;host;x-amz-date
+3829c817689f57aa05c342cc4e2427494d3ad91cedefbf747a1290ad338b9147
+2020-10-04 14:49:00,737 - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20201004T124900Z
+20201004/eu-central-1/sns/aws4_request
+d3b29dec39523a5e65439bf4f178adb6c7c19bab99fd71614f04e19f9af9a77a
+2020-10-04 14:49:00,737 - DEBUG - Signature:
+669a807eaf7bbcad69ac1a392068dd204a9a1592ace4b208ea97a25917c5bee3
+2020-10-04 14:49:00,737 - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=POST, url=https://sns.eu-central-1.amazonaws.com/, headers={'Content-Type': b'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': b'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11', 'X-Amz-Date': b'20201004T124900Z', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIATC7VAJB347YGSSS3/20201004/eu-central-1/sns/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=669a807eaf7bbcad69ac1a392068dd204a9a1592ace4b208ea97a25917c5bee3', 'Content-Length': '186'}>
+2020-10-04 14:49:00,738 - DEBUG - Starting new HTTPS connection (1): sns.eu-central-1.amazonaws.com:443
+2020-10-04 14:49:00,922 - DEBUG - https://sns.eu-central-1.amazonaws.com:443 "POST / HTTP/1.1" 200 294
+2020-10-04 14:49:00,923 - DEBUG - Response headers: {'x-amzn-RequestId': 'b64b94b7-dcba-504a-a895-c3441a46794b', 'Content-Type': 'text/xml', 'Content-Length': '294', 'Date': 'Sun, 04 Oct 2020 12:49:00 GMT'}
+2020-10-04 14:49:00,923 - DEBUG - Response body:
+b'<PublishResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">\n  <PublishResult>\n    <MessageId>2e567352-238f-5752-9a90-24a1e573de53</MessageId>\n  </PublishResult>\n  <ResponseMetadata>\n    <RequestId>b64b94b7-dcba-504a-a895-c3441a46794b</RequestId>\n  </ResponseMetadata>\n</PublishResponse>\n'
+2020-10-04 14:49:00,923 - DEBUG - Event needs-retry.sns.Publish: calling handler <botocore.retryhandler.RetryHandler object at 0x11d425710>
+2020-10-04 14:49:00,924 - DEBUG - No retry needed.
+2020-10-04 14:49:00,924 - DEBUG - SNS response: 200
+2020-10-04 15:36:31,756 - DEBUG - Establishing connection to 8pus
+2020-10-04 15:36:31,889 - DEBUG - covid.daily_stats Truncated
+2020-10-04 15:39:20,212 - DEBUG - Establishing connection to 8pus
+2020-10-04 15:39:20,290 - DEBUG - Error while running query no results to fetch    					delete from covid.daily_stats ds where ds.rep_date > '2020-09-30'
+2020-10-04 15:40:41,246 - DEBUG - Establishing connection to 8pus
+2020-10-04 15:40:50,442 - DEBUG - Establishing connection to 8pus
+2020-10-04 15:41:38,212 - DEBUG - Establishing connection to 8pus
+2020-10-04 15:41:38,332 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 15:41:47,644 - DEBUG - Establishing connection to 8pus
+2020-10-04 15:41:47,669 - DEBUG - covid.daily_stats was refreshed successfully!!
+
+2020-10-04 15:42:45,095 - DEBUG - Establishing connection to 8pus
+2020-10-04 15:42:45,207 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 15:45:17,815 - DEBUG - Establishing connection to 8pus
+2020-10-04 15:45:17,941 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 15:48:56,239 - DEBUG - Establishing connection to 8pus
+2020-10-04 15:48:56,380 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 15:50:51,031 - DEBUG - Establishing connection to 8pus
+2020-10-04 15:50:51,112 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 16:01:22,026 - DEBUG - Establishing connection to 8pus
+2020-10-04 16:01:22,129 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 16:02:02,838 - DEBUG - Establishing connection to 8pus
+2020-10-04 16:02:02,914 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 16:03:00,430 - DEBUG - Establishing connection to 8pus
+2020-10-04 16:03:00,489 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 16:03:42,042 - DEBUG - Establishing connection to 8pus
+2020-10-04 16:03:42,104 - DEBUG - Error while connecting to PostgreSQL FATAL:  password authentication failed for user "postgres1"
+
+2020-10-04 16:07:47,404 - DEBUG - Establishing connection to 8pus
+2020-10-04 16:07:47,536 - DEBUG - Error while connecting to PostgreSQL FATAL:  password authentication failed for user "postgres1"
+
+2020-10-04 16:08:20,232 - DEBUG - Establishing connection to 8pus
+2020-10-04 16:08:20,310 - DEBUG - Error while connecting to PostgreSQL FATAL:  password authentication failed for user "postgres1"
+
+2020-10-04 16:09:10,707 - DEBUG - Establishing connection to 8pus
+2020-10-04 16:09:10,786 - DEBUG - Error while connecting to PostgreSQL FATAL:  password authentication failed for user "postgres1"
+
+2020-10-04 16:09:37,910 - DEBUG - Establishing connection to 8pus
+2020-10-04 16:09:37,997 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 16:13:36,021 - DEBUG - Establishing connection to 8pus
+2020-10-04 16:13:36,173 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 16:14:13,314 - DEBUG - Establishing connection to 8pus
+2020-10-04 16:14:13,389 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 16:14:28,469 - DEBUG - Establishing connection to 8pus
+2020-10-04 16:14:28,537 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 16:15:56,346 - DEBUG - Establishing connection to 8pus
+2020-10-04 16:15:56,436 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 16:17:26,059 - DEBUG - Establishing connection to 8pus
+2020-10-04 16:17:26,153 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 16:17:55,707 - DEBUG - Establishing connection to 8pus
+2020-10-04 16:17:55,782 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 16:17:55,783 - DEBUG - Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2020-10-04 16:17:55,785 - DEBUG - Changing event name from before-call.apigateway to before-call.api-gateway
+2020-10-04 16:17:55,785 - DEBUG - Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2020-10-04 16:17:55,787 - DEBUG - Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2020-10-04 16:17:55,787 - DEBUG - Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2020-10-04 16:17:55,788 - DEBUG - Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2020-10-04 16:17:55,789 - DEBUG - Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2020-10-04 16:17:55,791 - DEBUG - Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2020-10-04 16:17:55,791 - DEBUG - Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2020-10-04 16:17:55,791 - DEBUG - Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2020-10-04 16:17:55,791 - DEBUG - Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2020-10-04 16:17:55,808 - DEBUG - Looking for credentials via: env
+2020-10-04 16:17:55,809 - DEBUG - Looking for credentials via: assume-role
+2020-10-04 16:17:55,809 - DEBUG - Looking for credentials via: assume-role-with-web-identity
+2020-10-04 16:17:55,809 - DEBUG - Looking for credentials via: sso
+2020-10-04 16:17:55,809 - DEBUG - Looking for credentials via: shared-credentials-file
+2020-10-04 16:17:55,809 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2020-10-04 16:17:55,811 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/endpoints.json
+2020-10-04 16:17:55,818 - DEBUG - Event choose-service-name: calling handler <function handle_service_name_alias at 0x121bb9dd0>
+2020-10-04 16:17:55,863 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/sns/2010-03-31/service-2.json
+2020-10-04 16:17:55,866 - DEBUG - Event creating-client-class.sns: calling handler <function add_generate_presigned_url at 0x121b66dd0>
+2020-10-04 16:17:55,885 - DEBUG - Setting sns timeout as (60, 60)
+2020-10-04 16:17:55,888 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/_retry.json
+2020-10-04 16:17:55,888 - DEBUG - Registering retry handlers for service: sns
+2020-10-04 16:17:55,890 - DEBUG - Event before-parameter-build.sns.Publish: calling handler <function generate_idempotent_uuid at 0x121be4f80>
+2020-10-04 16:17:55,890 - DEBUG - Event before-call.sns.Publish: calling handler <function inject_api_version_header_if_needed at 0x121bf4830>
+2020-10-04 16:17:55,890 - DEBUG - Making request for OperationModel(name=Publish) with params: {'url_path': '/', 'query_string': '', 'method': 'POST', 'headers': {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': 'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11'}, 'body': {'Action': 'Publish', 'Version': '2010-03-31', 'TopicArn': 'arn:aws:sns:eu-central-1:212577831031:sns-acg-etl', 'Subject': '[ACG-ETL] Table refresh success - 04-10-2020 16:17:55', 'Message': '\n        Hi,\n        COVID daily stats refreshed with 3 rows\n        '}, 'url': 'https://sns.eu-central-1.amazonaws.com/', 'context': {'client_region': 'eu-central-1', 'client_config': <botocore.config.Config object at 0x123e80650>, 'has_streaming_input': False, 'auth_type': None}}
+2020-10-04 16:17:55,891 - DEBUG - Event request-created.sns.Publish: calling handler <bound method RequestSigner.handler of <botocore.signers.RequestSigner object at 0x123e80710>>
+2020-10-04 16:17:55,891 - DEBUG - Event choose-signer.sns.Publish: calling handler <function set_operation_specific_signer at 0x121be4e60>
+2020-10-04 16:17:55,891 - DEBUG - Calculating signature using v4 auth.
+2020-10-04 16:17:55,892 - DEBUG - CanonicalRequest:
+POST
+/
+
+content-type:application/x-www-form-urlencoded; charset=utf-8
+host:sns.eu-central-1.amazonaws.com
+x-amz-date:20201004T141755Z
+
+content-type;host;x-amz-date
+bfe598345e61a46afedae725d67ef21b9c005f9340fb7861033976ce18b64fea
+2020-10-04 16:17:55,892 - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20201004T141755Z
+20201004/eu-central-1/sns/aws4_request
+4cad3a24342ff3daeff6bf7994c70f1ae907e93c04769008e4662a224f0fba48
+2020-10-04 16:17:55,892 - DEBUG - Signature:
+6a9286c729acc7cc7ce5f7eb67e57d3366ecbec258a1794a97f804c4a4777d3c
+2020-10-04 16:17:55,892 - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=POST, url=https://sns.eu-central-1.amazonaws.com/, headers={'Content-Type': b'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': b'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11', 'X-Amz-Date': b'20201004T141755Z', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIATC7VAJB347YGSSS3/20201004/eu-central-1/sns/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=6a9286c729acc7cc7ce5f7eb67e57d3366ecbec258a1794a97f804c4a4777d3c', 'Content-Length': '258'}>
+2020-10-04 16:17:55,893 - DEBUG - Starting new HTTPS connection (1): sns.eu-central-1.amazonaws.com:443
+2020-10-04 16:17:56,095 - DEBUG - https://sns.eu-central-1.amazonaws.com:443 "POST / HTTP/1.1" 200 294
+2020-10-04 16:17:56,096 - DEBUG - Response headers: {'x-amzn-RequestId': '9ba7bc08-ecc8-5a15-9471-ebfb371c2410', 'Content-Type': 'text/xml', 'Content-Length': '294', 'Date': 'Sun, 04 Oct 2020 14:17:56 GMT'}
+2020-10-04 16:17:56,096 - DEBUG - Response body:
+b'<PublishResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">\n  <PublishResult>\n    <MessageId>8ff9a6fe-4d04-5124-9497-f10d96d01f21</MessageId>\n  </PublishResult>\n  <ResponseMetadata>\n    <RequestId>9ba7bc08-ecc8-5a15-9471-ebfb371c2410</RequestId>\n  </ResponseMetadata>\n</PublishResponse>\n'
+2020-10-04 16:17:56,097 - DEBUG - Event needs-retry.sns.Publish: calling handler <botocore.retryhandler.RetryHandler object at 0x1140eec50>
+2020-10-04 16:17:56,097 - DEBUG - No retry needed.
+2020-10-04 16:17:56,097 - DEBUG - SNS response: 200
+2020-10-04 17:34:42,075 - DEBUG - Establishing connection to 8pus
+2020-10-04 17:34:42,202 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 17:34:42,203 - DEBUG - Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2020-10-04 17:34:42,205 - DEBUG - Changing event name from before-call.apigateway to before-call.api-gateway
+2020-10-04 17:34:42,205 - DEBUG - Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2020-10-04 17:34:42,207 - DEBUG - Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2020-10-04 17:34:42,208 - DEBUG - Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2020-10-04 17:34:42,208 - DEBUG - Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2020-10-04 17:34:42,209 - DEBUG - Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2020-10-04 17:34:42,212 - DEBUG - Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2020-10-04 17:34:42,212 - DEBUG - Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2020-10-04 17:34:42,212 - DEBUG - Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2020-10-04 17:34:42,213 - DEBUG - Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2020-10-04 17:34:42,231 - DEBUG - Looking for credentials via: env
+2020-10-04 17:34:42,232 - DEBUG - Looking for credentials via: assume-role
+2020-10-04 17:34:42,232 - DEBUG - Looking for credentials via: assume-role-with-web-identity
+2020-10-04 17:34:42,232 - DEBUG - Looking for credentials via: sso
+2020-10-04 17:34:42,232 - DEBUG - Looking for credentials via: shared-credentials-file
+2020-10-04 17:34:42,232 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2020-10-04 17:34:42,234 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/endpoints.json
+2020-10-04 17:34:42,241 - DEBUG - Event choose-service-name: calling handler <function handle_service_name_alias at 0x121b61a70>
+2020-10-04 17:34:42,292 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/sns/2010-03-31/service-2.json
+2020-10-04 17:34:42,295 - DEBUG - Event creating-client-class.sns: calling handler <function add_generate_presigned_url at 0x121b133b0>
+2020-10-04 17:34:42,320 - DEBUG - Setting sns timeout as (60, 60)
+2020-10-04 17:34:42,321 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/_retry.json
+2020-10-04 17:34:42,322 - DEBUG - Registering retry handlers for service: sns
+2020-10-04 17:34:42,323 - DEBUG - Event before-parameter-build.sns.Publish: calling handler <function generate_idempotent_uuid at 0x121b95560>
+2020-10-04 17:34:42,323 - DEBUG - Event before-call.sns.Publish: calling handler <function inject_api_version_header_if_needed at 0x121b99dd0>
+2020-10-04 17:34:42,323 - DEBUG - Making request for OperationModel(name=Publish) with params: {'url_path': '/', 'query_string': '', 'method': 'POST', 'headers': {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': 'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11'}, 'body': {'Action': 'Publish', 'Version': '2010-03-31', 'TopicArn': 'arn:aws:sns:eu-central-1:212577831031:sns-acg-etl', 'Subject': '[ACG-ETL] Job has completed - 04-10-2020 17:34:42', 'Message': '\n        Hi,\n        COVID daily stats refreshed with 3 rows\n        \n        Thanks & Regards,\n        ACG-Etl\n        '}, 'url': 'https://sns.eu-central-1.amazonaws.com/', 'context': {'client_region': 'eu-central-1', 'client_config': <botocore.config.Config object at 0x12407f690>, 'has_streaming_input': False, 'auth_type': None}}
+2020-10-04 17:34:42,323 - DEBUG - Event request-created.sns.Publish: calling handler <bound method RequestSigner.handler of <botocore.signers.RequestSigner object at 0x12407f590>>
+2020-10-04 17:34:42,324 - DEBUG - Event choose-signer.sns.Publish: calling handler <function set_operation_specific_signer at 0x121b95440>
+2020-10-04 17:34:42,324 - DEBUG - Calculating signature using v4 auth.
+2020-10-04 17:34:42,325 - DEBUG - CanonicalRequest:
+POST
+/
+
+content-type:application/x-www-form-urlencoded; charset=utf-8
+host:sns.eu-central-1.amazonaws.com
+x-amz-date:20201004T153442Z
+
+content-type;host;x-amz-date
+222b7c23a81d9c2773343e2f173456a120915b3ca758505f07c35d38ae5f7dfc
+2020-10-04 17:34:42,325 - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20201004T153442Z
+20201004/eu-central-1/sns/aws4_request
+dc9d9745b3f157ee1ebd1a80eaf2eda39942282efdb106c89289217170676e2a
+2020-10-04 17:34:42,325 - DEBUG - Signature:
+22291002edef1aa416683f105e44f2c34194b2264796dcbb69497ff6ac95387b
+2020-10-04 17:34:42,325 - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=POST, url=https://sns.eu-central-1.amazonaws.com/, headers={'Content-Type': b'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': b'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11', 'X-Amz-Date': b'20201004T153442Z', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIATC7VAJB347YGSSS3/20201004/eu-central-1/sns/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=22291002edef1aa416683f105e44f2c34194b2264796dcbb69497ff6ac95387b', 'Content-Length': '315'}>
+2020-10-04 17:34:42,326 - DEBUG - Starting new HTTPS connection (1): sns.eu-central-1.amazonaws.com:443
+2020-10-04 17:34:42,507 - DEBUG - https://sns.eu-central-1.amazonaws.com:443 "POST / HTTP/1.1" 200 294
+2020-10-04 17:34:42,507 - DEBUG - Response headers: {'x-amzn-RequestId': '126426c7-1beb-5f50-8677-7134f639f0f2', 'Content-Type': 'text/xml', 'Content-Length': '294', 'Date': 'Sun, 04 Oct 2020 15:34:42 GMT'}
+2020-10-04 17:34:42,507 - DEBUG - Response body:
+b'<PublishResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">\n  <PublishResult>\n    <MessageId>bc649b4d-591a-59f2-a6d5-ccbeb4c81650</MessageId>\n  </PublishResult>\n  <ResponseMetadata>\n    <RequestId>126426c7-1beb-5f50-8677-7134f639f0f2</RequestId>\n  </ResponseMetadata>\n</PublishResponse>\n'
+2020-10-04 17:34:42,508 - DEBUG - Event needs-retry.sns.Publish: calling handler <botocore.retryhandler.RetryHandler object at 0x12407fa90>
+2020-10-04 17:34:42,508 - DEBUG - No retry needed.
+2020-10-04 17:34:42,508 - DEBUG - SNS response: 200
+2020-10-04 17:34:48,490 - DEBUG - Establishing connection to 8pus
+2020-10-04 17:34:48,503 - DEBUG - covid.daily_stats has no data to insert
+2020-10-04 17:35:04,814 - DEBUG - Establishing connection to 8pus
+2020-10-04 17:35:04,889 - DEBUG - covid.daily_stats has no data to insert
+2020-10-04 18:09:30,389 - DEBUG - Establishing connection to 8pus
+2020-10-04 18:09:30,497 - DEBUG - Error while connecting to PostgreSQL FATAL:  password authentication failed for user "ashok"
+
+2020-10-04 18:09:30,498 - DEBUG - Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2020-10-04 18:09:30,500 - DEBUG - Changing event name from before-call.apigateway to before-call.api-gateway
+2020-10-04 18:09:30,501 - DEBUG - Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2020-10-04 18:09:30,503 - DEBUG - Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2020-10-04 18:09:30,503 - DEBUG - Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2020-10-04 18:09:30,504 - DEBUG - Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2020-10-04 18:09:30,505 - DEBUG - Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2020-10-04 18:09:30,508 - DEBUG - Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2020-10-04 18:09:30,508 - DEBUG - Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2020-10-04 18:09:30,509 - DEBUG - Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2020-10-04 18:09:30,509 - DEBUG - Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2020-10-04 18:09:30,526 - DEBUG - Looking for credentials via: env
+2020-10-04 18:09:30,527 - DEBUG - Looking for credentials via: assume-role
+2020-10-04 18:09:30,527 - DEBUG - Looking for credentials via: assume-role-with-web-identity
+2020-10-04 18:09:30,527 - DEBUG - Looking for credentials via: sso
+2020-10-04 18:09:30,527 - DEBUG - Looking for credentials via: shared-credentials-file
+2020-10-04 18:09:30,527 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2020-10-04 18:09:30,528 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/endpoints.json
+2020-10-04 18:09:30,535 - DEBUG - Event choose-service-name: calling handler <function handle_service_name_alias at 0x11b8910e0>
+2020-10-04 18:09:30,572 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/sns/2010-03-31/service-2.json
+2020-10-04 18:09:30,575 - DEBUG - Event creating-client-class.sns: calling handler <function add_generate_presigned_url at 0x11b83e170>
+2020-10-04 18:09:30,601 - DEBUG - Setting sns timeout as (60, 60)
+2020-10-04 18:09:30,602 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/_retry.json
+2020-10-04 18:09:30,603 - DEBUG - Registering retry handlers for service: sns
+2020-10-04 18:09:30,603 - DEBUG - Event before-parameter-build.sns.Publish: calling handler <function generate_idempotent_uuid at 0x11b8c6290>
+2020-10-04 18:09:30,604 - DEBUG - Event before-call.sns.Publish: calling handler <function inject_api_version_header_if_needed at 0x11b8cbb00>
+2020-10-04 18:09:30,604 - DEBUG - Making request for OperationModel(name=Publish) with params: {'url_path': '/', 'query_string': '', 'method': 'POST', 'headers': {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': 'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11'}, 'body': {'Action': 'Publish', 'Version': '2010-03-31', 'TopicArn': 'arn:aws:sns:eu-central-1:212577831031:sns-acg-etl', 'Subject': '[ACG-ETL] Error during the table refresh - 04-10-2020 18:09:30', 'Message': '\n        Hi,\n        There was error during the covid data refresh.\n        Error message: FATAL:  password authentication failed for user "ashok"\n\n        \n        Thanks & Regards,\n        ACG-Etl\n        '}, 'url': 'https://sns.eu-central-1.amazonaws.com/', 'context': {'client_region': 'eu-central-1', 'client_config': <botocore.config.Config object at 0x11ddb5710>, 'has_streaming_input': False, 'auth_type': None}}
+2020-10-04 18:09:30,604 - DEBUG - Event request-created.sns.Publish: calling handler <bound method RequestSigner.handler of <botocore.signers.RequestSigner object at 0x11ddb56d0>>
+2020-10-04 18:09:30,604 - DEBUG - Event choose-signer.sns.Publish: calling handler <function set_operation_specific_signer at 0x11b8c6170>
+2020-10-04 18:09:30,605 - DEBUG - Calculating signature using v4 auth.
+2020-10-04 18:09:30,605 - DEBUG - CanonicalRequest:
+POST
+/
+
+content-type:application/x-www-form-urlencoded; charset=utf-8
+host:sns.eu-central-1.amazonaws.com
+x-amz-date:20201004T160930Z
+
+content-type;host;x-amz-date
+810a858d5a8405cea882c0105bdd0e54e142b09edcea8608309c2616895a4ecc
+2020-10-04 18:09:30,605 - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20201004T160930Z
+20201004/eu-central-1/sns/aws4_request
+781b6a5bb0b50a3ca2c76b2ccfdbbde3604c01cde704904d486642cb5312ea1f
+2020-10-04 18:09:30,605 - DEBUG - Signature:
+d04c21f57c7c498d60ef4adf5eaac4b1f5e1084437e5882223b32e8d08ff099c
+2020-10-04 18:09:30,605 - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=POST, url=https://sns.eu-central-1.amazonaws.com/, headers={'Content-Type': b'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': b'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11', 'X-Amz-Date': b'20201004T160930Z', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIATC7VAJB347YGSSS3/20201004/eu-central-1/sns/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=d04c21f57c7c498d60ef4adf5eaac4b1f5e1084437e5882223b32e8d08ff099c', 'Content-Length': '427'}>
+2020-10-04 18:09:30,606 - DEBUG - Starting new HTTPS connection (1): sns.eu-central-1.amazonaws.com:443
+2020-10-04 18:09:30,792 - DEBUG - https://sns.eu-central-1.amazonaws.com:443 "POST / HTTP/1.1" 200 294
+2020-10-04 18:09:30,793 - DEBUG - Response headers: {'x-amzn-RequestId': '4c753855-5991-57f7-b378-6fa6ac6b2e1b', 'Content-Type': 'text/xml', 'Content-Length': '294', 'Date': 'Sun, 04 Oct 2020 16:09:29 GMT'}
+2020-10-04 18:09:30,793 - DEBUG - Response body:
+b'<PublishResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">\n  <PublishResult>\n    <MessageId>706f417e-9a58-5fd8-9369-168d6fa26634</MessageId>\n  </PublishResult>\n  <ResponseMetadata>\n    <RequestId>4c753855-5991-57f7-b378-6fa6ac6b2e1b</RequestId>\n  </ResponseMetadata>\n</PublishResponse>\n'
+2020-10-04 18:09:30,793 - DEBUG - Event needs-retry.sns.Publish: calling handler <botocore.retryhandler.RetryHandler object at 0x11ddb5b10>
+2020-10-04 18:09:30,794 - DEBUG - No retry needed.
+2020-10-04 18:09:30,794 - DEBUG - SNS response: 200
+2020-10-04 18:09:54,466 - DEBUG - Establishing connection to 8pus
+2020-10-04 18:09:54,517 - DEBUG - Error while connecting to PostgreSQL FATAL:  password authentication failed for user "ashok"
+
+2020-10-04 18:09:54,518 - DEBUG - Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2020-10-04 18:09:54,519 - DEBUG - Changing event name from before-call.apigateway to before-call.api-gateway
+2020-10-04 18:09:54,520 - DEBUG - Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2020-10-04 18:09:54,521 - DEBUG - Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2020-10-04 18:09:54,522 - DEBUG - Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2020-10-04 18:09:54,522 - DEBUG - Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2020-10-04 18:09:54,523 - DEBUG - Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2020-10-04 18:09:54,525 - DEBUG - Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2020-10-04 18:09:54,525 - DEBUG - Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2020-10-04 18:09:54,525 - DEBUG - Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2020-10-04 18:09:54,526 - DEBUG - Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2020-10-04 18:09:54,538 - DEBUG - Looking for credentials via: env
+2020-10-04 18:09:54,538 - DEBUG - Looking for credentials via: assume-role
+2020-10-04 18:09:54,538 - DEBUG - Looking for credentials via: assume-role-with-web-identity
+2020-10-04 18:09:54,538 - DEBUG - Looking for credentials via: sso
+2020-10-04 18:09:54,538 - DEBUG - Looking for credentials via: shared-credentials-file
+2020-10-04 18:09:54,539 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2020-10-04 18:09:54,539 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/endpoints.json
+2020-10-04 18:09:54,544 - DEBUG - Event choose-service-name: calling handler <function handle_service_name_alias at 0x115c660e0>
+2020-10-04 18:09:54,559 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/sns/2010-03-31/service-2.json
+2020-10-04 18:09:54,563 - DEBUG - Event creating-client-class.sns: calling handler <function add_generate_presigned_url at 0x115c14170>
+2020-10-04 18:09:54,570 - DEBUG - Setting sns timeout as (60, 60)
+2020-10-04 18:09:54,572 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/_retry.json
+2020-10-04 18:09:54,573 - DEBUG - Registering retry handlers for service: sns
+2020-10-04 18:09:54,574 - DEBUG - Event before-parameter-build.sns.Publish: calling handler <function generate_idempotent_uuid at 0x115c9b290>
+2020-10-04 18:09:54,574 - DEBUG - Event before-call.sns.Publish: calling handler <function inject_api_version_header_if_needed at 0x115ca0b00>
+2020-10-04 18:09:54,574 - DEBUG - Making request for OperationModel(name=Publish) with params: {'url_path': '/', 'query_string': '', 'method': 'POST', 'headers': {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': 'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11'}, 'body': {'Action': 'Publish', 'Version': '2010-03-31', 'TopicArn': 'arn:aws:sns:eu-central-1:212577831031:sns-acg-etl', 'Subject': '[ACG-ETL] Error during the table refresh - 04-10-2020 18:09:54', 'Message': '\n        Hi,\n        There was error during the covid data refresh.\n        Error message: FATAL:  password authentication failed for user "ashok"\n\n        \n        Thanks & Regards,\n        ACG-Etl\n        '}, 'url': 'https://sns.eu-central-1.amazonaws.com/', 'context': {'client_region': 'eu-central-1', 'client_config': <botocore.config.Config object at 0x1181755d0>, 'has_streaming_input': False, 'auth_type': None}}
+2020-10-04 18:09:54,575 - DEBUG - Event request-created.sns.Publish: calling handler <bound method RequestSigner.handler of <botocore.signers.RequestSigner object at 0x118175590>>
+2020-10-04 18:09:54,575 - DEBUG - Event choose-signer.sns.Publish: calling handler <function set_operation_specific_signer at 0x115c9b170>
+2020-10-04 18:09:54,576 - DEBUG - Calculating signature using v4 auth.
+2020-10-04 18:09:54,576 - DEBUG - CanonicalRequest:
+POST
+/
+
+content-type:application/x-www-form-urlencoded; charset=utf-8
+host:sns.eu-central-1.amazonaws.com
+x-amz-date:20201004T160954Z
+
+content-type;host;x-amz-date
+afcf40512254aa2dd7e1fc2c208e8762e17e74bf32ff811f803675b8ac664e6a
+2020-10-04 18:09:54,576 - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20201004T160954Z
+20201004/eu-central-1/sns/aws4_request
+f5562b627d65376e402b598f529bf092db8d56b83e0e06af9d46361d68b38303
+2020-10-04 18:09:54,576 - DEBUG - Signature:
+d78e1ec7a2289d7ad0cde091c081ba8e11273673309f16a6430cd4448ce2560b
+2020-10-04 18:09:54,577 - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=POST, url=https://sns.eu-central-1.amazonaws.com/, headers={'Content-Type': b'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': b'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11', 'X-Amz-Date': b'20201004T160954Z', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIATC7VAJB347YGSSS3/20201004/eu-central-1/sns/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=d78e1ec7a2289d7ad0cde091c081ba8e11273673309f16a6430cd4448ce2560b', 'Content-Length': '427'}>
+2020-10-04 18:09:54,577 - DEBUG - Starting new HTTPS connection (1): sns.eu-central-1.amazonaws.com:443
+2020-10-04 18:09:54,722 - DEBUG - https://sns.eu-central-1.amazonaws.com:443 "POST / HTTP/1.1" 200 294
+2020-10-04 18:09:54,722 - DEBUG - Response headers: {'x-amzn-RequestId': 'd9861fad-ea91-5f19-88f9-485e1c8397fe', 'Content-Type': 'text/xml', 'Content-Length': '294', 'Date': 'Sun, 04 Oct 2020 16:09:54 GMT'}
+2020-10-04 18:09:54,722 - DEBUG - Response body:
+b'<PublishResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">\n  <PublishResult>\n    <MessageId>78c16237-bbae-5049-8ddc-35c44dbc18ae</MessageId>\n  </PublishResult>\n  <ResponseMetadata>\n    <RequestId>d9861fad-ea91-5f19-88f9-485e1c8397fe</RequestId>\n  </ResponseMetadata>\n</PublishResponse>\n'
+2020-10-04 18:09:54,723 - DEBUG - Event needs-retry.sns.Publish: calling handler <botocore.retryhandler.RetryHandler object at 0x118175a10>
+2020-10-04 18:09:54,723 - DEBUG - No retry needed.
+2020-10-04 18:09:54,723 - DEBUG - SNS response: 200
+2020-10-04 18:10:11,763 - DEBUG - Establishing connection to 8pus
+2020-10-04 18:10:11,831 - DEBUG - Error while connecting to PostgreSQL FATAL:  password authentication failed for user "ashok"
+
+2020-10-04 18:10:11,832 - DEBUG - Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2020-10-04 18:10:11,834 - DEBUG - Changing event name from before-call.apigateway to before-call.api-gateway
+2020-10-04 18:10:11,834 - DEBUG - Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2020-10-04 18:10:11,836 - DEBUG - Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2020-10-04 18:10:11,836 - DEBUG - Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2020-10-04 18:10:11,837 - DEBUG - Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2020-10-04 18:10:11,838 - DEBUG - Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2020-10-04 18:10:11,841 - DEBUG - Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2020-10-04 18:10:11,841 - DEBUG - Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2020-10-04 18:10:11,841 - DEBUG - Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2020-10-04 18:10:11,841 - DEBUG - Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2020-10-04 18:10:11,857 - DEBUG - Looking for credentials via: env
+2020-10-04 18:10:11,857 - DEBUG - Looking for credentials via: assume-role
+2020-10-04 18:10:11,857 - DEBUG - Looking for credentials via: assume-role-with-web-identity
+2020-10-04 18:10:11,857 - DEBUG - Looking for credentials via: sso
+2020-10-04 18:10:11,857 - DEBUG - Looking for credentials via: shared-credentials-file
+2020-10-04 18:10:11,858 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2020-10-04 18:10:11,858 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/endpoints.json
+2020-10-04 18:10:11,865 - DEBUG - Event choose-service-name: calling handler <function handle_service_name_alias at 0x11923d0e0>
+2020-10-04 18:10:11,879 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/sns/2010-03-31/service-2.json
+2020-10-04 18:10:11,881 - DEBUG - Event creating-client-class.sns: calling handler <function add_generate_presigned_url at 0x1191ec170>
+2020-10-04 18:10:11,884 - DEBUG - Setting sns timeout as (60, 60)
+2020-10-04 18:10:11,885 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/_retry.json
+2020-10-04 18:10:11,885 - DEBUG - Registering retry handlers for service: sns
+2020-10-04 18:10:11,885 - DEBUG - Event before-parameter-build.sns.Publish: calling handler <function generate_idempotent_uuid at 0x119272290>
+2020-10-04 18:10:11,886 - DEBUG - Event before-call.sns.Publish: calling handler <function inject_api_version_header_if_needed at 0x119277b00>
+2020-10-04 18:10:11,886 - DEBUG - Making request for OperationModel(name=Publish) with params: {'url_path': '/', 'query_string': '', 'method': 'POST', 'headers': {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': 'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11'}, 'body': {'Action': 'Publish', 'Version': '2010-03-31', 'TopicArn': 'arn:aws:sns:eu-central-1:212577831031:sns-acg-etl', 'Subject': '[ACG-ETL] Error during the table refresh - 04-10-2020 18:10:11', 'Message': '\n        Hi,\n        There was error during the covid data refresh.\n        Error message: FATAL:  password authentication failed for user "ashok"\n\n        \n        Thanks & Regards,\n        ACG-Etl\n        '}, 'url': 'https://sns.eu-central-1.amazonaws.com/', 'context': {'client_region': 'eu-central-1', 'client_config': <botocore.config.Config object at 0x11b74e690>, 'has_streaming_input': False, 'auth_type': None}}
+2020-10-04 18:10:11,886 - DEBUG - Event request-created.sns.Publish: calling handler <bound method RequestSigner.handler of <botocore.signers.RequestSigner object at 0x11b74e650>>
+2020-10-04 18:10:11,886 - DEBUG - Event choose-signer.sns.Publish: calling handler <function set_operation_specific_signer at 0x119272170>
+2020-10-04 18:10:11,887 - DEBUG - Calculating signature using v4 auth.
+2020-10-04 18:10:11,887 - DEBUG - CanonicalRequest:
+POST
+/
+
+content-type:application/x-www-form-urlencoded; charset=utf-8
+host:sns.eu-central-1.amazonaws.com
+x-amz-date:20201004T161011Z
+
+content-type;host;x-amz-date
+9cf2d6f22da38a898522607a3435e428f25223eb320a576bd041fb8579b0efa3
+2020-10-04 18:10:11,887 - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20201004T161011Z
+20201004/eu-central-1/sns/aws4_request
+00c5be2040447f80b1272c14e12f3dac2335e9605e5d7f6583d89f607a145c83
+2020-10-04 18:10:11,887 - DEBUG - Signature:
+4fd3573f977a7d0f3a2446a636426e432073cbabcbe0a07a051878f09b1d7452
+2020-10-04 18:10:11,887 - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=POST, url=https://sns.eu-central-1.amazonaws.com/, headers={'Content-Type': b'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': b'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11', 'X-Amz-Date': b'20201004T161011Z', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIATC7VAJB347YGSSS3/20201004/eu-central-1/sns/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=4fd3573f977a7d0f3a2446a636426e432073cbabcbe0a07a051878f09b1d7452', 'Content-Length': '427'}>
+2020-10-04 18:10:11,888 - DEBUG - Starting new HTTPS connection (1): sns.eu-central-1.amazonaws.com:443
+2020-10-04 18:10:12,047 - DEBUG - https://sns.eu-central-1.amazonaws.com:443 "POST / HTTP/1.1" 200 294
+2020-10-04 18:10:12,048 - DEBUG - Response headers: {'x-amzn-RequestId': '3132cef7-fa62-5055-91eb-99040c46d0f2', 'Content-Type': 'text/xml', 'Content-Length': '294', 'Date': 'Sun, 04 Oct 2020 16:10:11 GMT'}
+2020-10-04 18:10:12,048 - DEBUG - Response body:
+b'<PublishResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">\n  <PublishResult>\n    <MessageId>9bf0ad88-686f-51bc-894d-fa7b9e4b511b</MessageId>\n  </PublishResult>\n  <ResponseMetadata>\n    <RequestId>3132cef7-fa62-5055-91eb-99040c46d0f2</RequestId>\n  </ResponseMetadata>\n</PublishResponse>\n'
+2020-10-04 18:10:12,049 - DEBUG - Event needs-retry.sns.Publish: calling handler <botocore.retryhandler.RetryHandler object at 0x11b74ead0>
+2020-10-04 18:10:12,049 - DEBUG - No retry needed.
+2020-10-04 18:10:12,049 - DEBUG - SNS response: 200
+2020-10-04 18:13:34,768 - DEBUG - Establishing connection to 8pus
+2020-10-04 18:13:34,838 - DEBUG - Error while connecting to PostgreSQL FATAL:  password authentication failed for user "ashok"
+
+2020-10-04 18:13:34,839 - DEBUG - Changing event name from creating-client-class.iot-data to creating-client-class.iot-data-plane
+2020-10-04 18:13:34,841 - DEBUG - Changing event name from before-call.apigateway to before-call.api-gateway
+2020-10-04 18:13:34,842 - DEBUG - Changing event name from request-created.machinelearning.Predict to request-created.machine-learning.Predict
+2020-10-04 18:13:34,844 - DEBUG - Changing event name from before-parameter-build.autoscaling.CreateLaunchConfiguration to before-parameter-build.auto-scaling.CreateLaunchConfiguration
+2020-10-04 18:13:34,844 - DEBUG - Changing event name from before-parameter-build.route53 to before-parameter-build.route-53
+2020-10-04 18:13:34,844 - DEBUG - Changing event name from request-created.cloudsearchdomain.Search to request-created.cloudsearch-domain.Search
+2020-10-04 18:13:34,845 - DEBUG - Changing event name from docs.*.autoscaling.CreateLaunchConfiguration.complete-section to docs.*.auto-scaling.CreateLaunchConfiguration.complete-section
+2020-10-04 18:13:34,848 - DEBUG - Changing event name from before-parameter-build.logs.CreateExportTask to before-parameter-build.cloudwatch-logs.CreateExportTask
+2020-10-04 18:13:34,848 - DEBUG - Changing event name from docs.*.logs.CreateExportTask.complete-section to docs.*.cloudwatch-logs.CreateExportTask.complete-section
+2020-10-04 18:13:34,849 - DEBUG - Changing event name from before-parameter-build.cloudsearchdomain.Search to before-parameter-build.cloudsearch-domain.Search
+2020-10-04 18:13:34,849 - DEBUG - Changing event name from docs.*.cloudsearchdomain.Search.complete-section to docs.*.cloudsearch-domain.Search.complete-section
+2020-10-04 18:13:34,868 - DEBUG - Looking for credentials via: env
+2020-10-04 18:13:34,868 - DEBUG - Looking for credentials via: assume-role
+2020-10-04 18:13:34,868 - DEBUG - Looking for credentials via: assume-role-with-web-identity
+2020-10-04 18:13:34,868 - DEBUG - Looking for credentials via: sso
+2020-10-04 18:13:34,868 - DEBUG - Looking for credentials via: shared-credentials-file
+2020-10-04 18:13:34,869 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2020-10-04 18:13:34,870 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/endpoints.json
+2020-10-04 18:13:34,877 - DEBUG - Event choose-service-name: calling handler <function handle_service_name_alias at 0x11584d0e0>
+2020-10-04 18:13:34,895 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/sns/2010-03-31/service-2.json
+2020-10-04 18:13:34,898 - DEBUG - Event creating-client-class.sns: calling handler <function add_generate_presigned_url at 0x1157fc170>
+2020-10-04 18:13:34,919 - DEBUG - Setting sns timeout as (60, 60)
+2020-10-04 18:13:34,921 - DEBUG - Loading JSON file: /Users/ashok.ballolli/king/repo/Scripts/venv/lib/python3.7/site-packages/botocore/data/_retry.json
+2020-10-04 18:13:34,922 - DEBUG - Registering retry handlers for service: sns
+2020-10-04 18:13:34,923 - DEBUG - Event before-parameter-build.sns.Publish: calling handler <function generate_idempotent_uuid at 0x115882290>
+2020-10-04 18:13:34,923 - DEBUG - Event before-call.sns.Publish: calling handler <function inject_api_version_header_if_needed at 0x115887b00>
+2020-10-04 18:13:34,923 - DEBUG - Making request for OperationModel(name=Publish) with params: {'url_path': '/', 'query_string': '', 'method': 'POST', 'headers': {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': 'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11'}, 'body': {'Action': 'Publish', 'Version': '2010-03-31', 'TopicArn': 'arn:aws:sns:eu-central-1:212577831031:sns-acg-etl', 'Subject': '[ACG-ETL] Error during the table refresh - 04-10-2020 18:13:34', 'Message': '\n        Hi,\n        There was error during the covid data refresh.\n        Error message: FATAL:  password authentication failed for user "ashok"\n\n        \n        Thanks & Regards,\n        ACG-Etl\n        '}, 'url': 'https://sns.eu-central-1.amazonaws.com/', 'context': {'client_region': 'eu-central-1', 'client_config': <botocore.config.Config object at 0x117d55490>, 'has_streaming_input': False, 'auth_type': None}}
+2020-10-04 18:13:34,924 - DEBUG - Event request-created.sns.Publish: calling handler <bound method RequestSigner.handler of <botocore.signers.RequestSigner object at 0x117d55450>>
+2020-10-04 18:13:34,924 - DEBUG - Event choose-signer.sns.Publish: calling handler <function set_operation_specific_signer at 0x115882170>
+2020-10-04 18:13:34,924 - DEBUG - Calculating signature using v4 auth.
+2020-10-04 18:13:34,925 - DEBUG - CanonicalRequest:
+POST
+/
+
+content-type:application/x-www-form-urlencoded; charset=utf-8
+host:sns.eu-central-1.amazonaws.com
+x-amz-date:20201004T161334Z
+
+content-type;host;x-amz-date
+5a8c728bf250d5c7bdd8146e4b19033e18223e97b55ae3e87c659a3dabffe30e
+2020-10-04 18:13:34,925 - DEBUG - StringToSign:
+AWS4-HMAC-SHA256
+20201004T161334Z
+20201004/eu-central-1/sns/aws4_request
+8082bf1b323eb2af0dab1de89c0db1719b569e591df75429851e67c4313468c7
+2020-10-04 18:13:34,925 - DEBUG - Signature:
+d7780aad9c5e5b3c6fd49de3d508b5114bcafecd815786253e7c08b63fd8ff48
+2020-10-04 18:13:34,925 - DEBUG - Sending http request: <AWSPreparedRequest stream_output=False, method=POST, url=https://sns.eu-central-1.amazonaws.com/, headers={'Content-Type': b'application/x-www-form-urlencoded; charset=utf-8', 'User-Agent': b'Boto3/1.15.11 Python/3.7.8 Darwin/19.4.0 Botocore/1.18.11', 'X-Amz-Date': b'20201004T161334Z', 'Authorization': b'AWS4-HMAC-SHA256 Credential=AKIATC7VAJB347YGSSS3/20201004/eu-central-1/sns/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=d7780aad9c5e5b3c6fd49de3d508b5114bcafecd815786253e7c08b63fd8ff48', 'Content-Length': '427'}>
+2020-10-04 18:13:34,926 - DEBUG - Starting new HTTPS connection (1): sns.eu-central-1.amazonaws.com:443
+2020-10-04 18:13:35,117 - DEBUG - https://sns.eu-central-1.amazonaws.com:443 "POST / HTTP/1.1" 200 294
+2020-10-04 18:13:35,118 - DEBUG - Response headers: {'x-amzn-RequestId': '96d3f441-8f1e-5d0e-919c-a3b279f16444', 'Content-Type': 'text/xml', 'Content-Length': '294', 'Date': 'Sun, 04 Oct 2020 16:13:34 GMT'}
+2020-10-04 18:13:35,118 - DEBUG - Response body:
+b'<PublishResponse xmlns="http://sns.amazonaws.com/doc/2010-03-31/">\n  <PublishResult>\n    <MessageId>8ed9e39a-f5ca-583e-a72b-b4690325d174</MessageId>\n  </PublishResult>\n  <ResponseMetadata>\n    <RequestId>96d3f441-8f1e-5d0e-919c-a3b279f16444</RequestId>\n  </ResponseMetadata>\n</PublishResponse>\n'
+2020-10-04 18:13:35,119 - DEBUG - Event needs-retry.sns.Publish: calling handler <botocore.retryhandler.RetryHandler object at 0x117d55890>
+2020-10-04 18:13:35,119 - DEBUG - No retry needed.
+2020-10-04 18:13:35,119 - DEBUG - SNS response: 200
+2020-10-04 18:16:48,098 - DEBUG - Establishing connection to 8pus
+2020-10-04 18:16:48,201 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 18:23:20,020 - DEBUG - Establishing connection to 8pus
+2020-10-04 18:23:20,087 - DEBUG - covid.daily_stats has no data to insert
+2020-10-04 20:29:20,187 - DEBUG - Establishing connection to 8pus
+2020-10-04 20:29:20,361 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 20:29:41,770 - DEBUG - Establishing connection to 8pus
+2020-10-04 20:29:41,834 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 20:29:52,067 - DEBUG - Establishing connection to 8pus
+2020-10-04 20:29:52,077 - DEBUG - Error while running query relation "covid.daily_stats" does not exist
+LINE 1: delete from covid.daily_stats ds where ds.rep_date > '2020-0...
+                    ^
+    					delete from covid.daily_stats ds where ds.rep_date > '2020-09-30'
+2020-10-04 20:30:31,009 - DEBUG - Establishing connection to 8pus
+2020-10-04 20:30:31,114 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 20:35:58,877 - DEBUG - Establishing connection to 8pus
+2020-10-04 20:35:58,987 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 20:36:19,553 - DEBUG - Establishing connection to 8pus
+2020-10-04 20:36:19,614 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 20:38:50,899 - DEBUG - Establishing connection to 8pus
+2020-10-04 20:38:51,841 - DEBUG - covid.daily_stats was refreshed successfully!!
+
+
+
+2020-10-04 20:39:05,442 - DEBUG - Establishing connection to 8pus
+2020-10-04 20:39:06,228 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 20:41:37,364 - DEBUG - Establishing connection to 8pus
+2020-10-04 20:41:38,476 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-04 20:41:48,979 - DEBUG - Establishing connection to 8pus
+2020-10-04 20:41:49,666 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-05 12:16:08,478 - DEBUG - Establishing connection to 8pus
+2020-10-05 12:16:08,528 - DEBUG - Error while connecting to PostgreSQL FATAL:  database "acg_challenge_sept" does not exist
+
+2020-10-05 12:16:45,105 - DEBUG - Establishing connection to 8pus
+2020-10-05 12:16:45,148 - DEBUG - Error while connecting to PostgreSQL FATAL:  database "acg_challenge_sept" does not exist
+
+2020-10-05 12:18:25,098 - DEBUG - Establishing connection to 8pus
+2020-10-05 12:18:25,180 - DEBUG - Error while connecting to PostgreSQL FATAL:  database "acg_challenge_sept" does not exist
+
+2020-10-05 12:19:17,050 - DEBUG - Establishing connection to 8pus
+2020-10-05 12:19:18,317 - DEBUG - Error while running query schema "covid" does not exist
+LINE 1: CREATE TABLE IF NOT EXISTS covid.daily_stats (rep_date date ...
+                                   ^
+					CREATE TABLE IF NOT EXISTS covid.daily_stats (rep_date date PRIMARY KEY, cases integer, deaths integer, recovered integer)
+2020-10-05 12:19:44,541 - DEBUG - Establishing connection to 8pus
+2020-10-05 12:19:45,293 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-05 12:20:11,426 - DEBUG - Establishing connection to 8pus
+2020-10-05 12:20:12,126 - DEBUG - covid.daily_stats has no data to insert
+2020-10-05 12:21:06,655 - DEBUG - Establishing connection to 8pus
+2020-10-05 12:21:07,670 - DEBUG - covid.daily_stats has no data to insert
+2020-10-05 12:21:20,121 - DEBUG - Establishing connection to 8pus
+2020-10-05 12:21:20,967 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-05 12:21:48,131 - DEBUG - Establishing connection to 8pus
+2020-10-05 12:21:49,191 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-05 12:30:06,535 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-05 12:30:06,543 - DEBUG - covid.daily_stats has no data to insert
+2020-10-05 12:30:06,549 - DEBUG - Error while running query connection already closed					SELECT to_regclass('covid.daily_stats')
+2020-10-05 12:30:06,552 - DEBUG - covid.daily_stats has no data to insert
+2020-10-05 12:30:06,555 - DEBUG - covid.daily_stats has no data to insert
+2020-10-05 12:30:06,557 - DEBUG - covid.daily_stats has no data to insert
+2020-10-05 12:30:06,609 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-05 12:30:06,659 - DEBUG - covid.daily_stats has no data to insert
+2020-10-05 12:30:06,706 - DEBUG - covid.daily_stats has no data to insert
+2020-10-09 15:03:12,549 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-09 15:03:12,558 - DEBUG - covid.daily_stats has no data to insert
+2020-10-09 15:03:12,563 - DEBUG - Error while running query connection already closed					SELECT to_regclass('covid.daily_stats')
+2020-10-09 15:03:12,566 - DEBUG - covid.daily_stats has no data to insert
+2020-10-09 15:03:12,569 - DEBUG - covid.daily_stats has no data to insert
+2020-10-09 15:03:12,572 - DEBUG - covid.daily_stats has no data to insert
+2020-10-09 15:03:12,626 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-09 15:03:12,678 - DEBUG - covid.daily_stats has no data to insert
+2020-10-09 15:03:12,725 - DEBUG - covid.daily_stats has no data to insert
+2020-10-09 15:03:57,154 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-09 15:03:57,159 - DEBUG - covid.daily_stats has no data to insert
+2020-10-09 15:03:57,164 - DEBUG - Error while running query connection already closed					SELECT to_regclass('covid.daily_stats')
+2020-10-09 15:03:57,167 - DEBUG - covid.daily_stats has no data to insert
+2020-10-09 15:03:57,169 - DEBUG - covid.daily_stats has no data to insert
+2020-10-09 15:03:57,172 - DEBUG - covid.daily_stats has no data to insert
+2020-10-09 15:03:57,222 - DEBUG - covid.daily_stats was refreshed successfully!!
+2020-10-09 15:03:57,272 - DEBUG - covid.daily_stats has no data to insert
+2020-10-09 15:03:57,319 - DEBUG - covid.daily_stats has no data to insert

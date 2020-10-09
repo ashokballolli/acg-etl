@@ -1,6 +1,6 @@
 log:
   file_path: logs/etl.log
-  level: DEBUG
+  level: ERROR
 
 dwh:
   host: localhost
