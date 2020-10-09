@@ -12,6 +12,7 @@ resource "aws_iam_role" "lambda_sns_role01" {
         }
       },
     ]
+    Version   = "2008-10-17"
   }
   )
   description = "Allows Lambda functions to call AWS services on your behalf."
