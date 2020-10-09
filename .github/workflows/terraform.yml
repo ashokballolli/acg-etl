@@ -78,11 +78,12 @@ jobs:
       # On push to master, build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
 
-    - name: python-version
-#      if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v2
       with:
+        # Semantic version range syntax or exact version of a Python version
         python-version: '3.7.9'
-
+        
     - name: Package Libraries
 #      if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
       run: |
