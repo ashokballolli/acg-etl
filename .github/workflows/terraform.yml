@@ -71,11 +71,11 @@ jobs:
       run: terraform fmt -check
 
     # Generates an execution plan for Terraform
-#    - name: Terraform Plan
-#      id: plan
-#      run: |
-#          cd iac-terraform/setup
-#          terraform plan -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}'
+    - name: Terraform Plan
+      id: plan
+      run: |
+          cd iac-terraform/setup
+          terraform plan -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}'
 
       # On push to master, build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
@@ -103,12 +103,14 @@ jobs:
           echo "HERE"
           ls -la ~/work/acg-etl/acg-etl
           ls -la ~/work/acg-etl/acg-etl/requirements.txt
-          
+
           python3.7 -m pip install -r ~/work/acg-etl/acg-etl/requirements.txt  -t .
           cd ~/acg-etl-lib
           zip -r python.zip .
           ls -la
           pwd
+          mv python.zip ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload
+          ls -la ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload
 
     - name: Terraform Apply
       if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
