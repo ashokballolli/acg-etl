@@ -79,44 +79,37 @@ jobs:
 
       # On push to master, build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
+    - name: debug plan
+      # if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
+      run: |
+          echo "steps output"
+          var_s1 = steps.plan.outputs
+          var_s2 = steps.plan.outputs.tf_actions_plan_has_changes
+          echo "var_s1"
+          echo "var_s2"
 
-    - name: Set up Python 3.x
-      uses: actions/setup-python@v2
-      with:
-        # Semantic version range syntax or exact version of a Python version
-        python-version: '3.7.9'
-
-    - name: Package Libraries
+#    - name: Set up Python 3.x
+#      uses: actions/setup-python@v2
+#      with:
+#        # Semantic version range syntax or exact version of a Python version
+#        python-version: '3.7.9'
+#
+#    - name: Package Libraries
 #      if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
-      run: |
-          python --version
-          pwd
-          cd ${{env.project-home-directory}}
-          pwd
-
-          pwd
-          ls -la
-          ls -la ~/
-          mkdir -p ~/acg-etl-lib/python/lib/python3.7/site-packages
-          cd ~/acg-etl-lib/python/lib/python3.7/site-packages
-          # python -m pip install --upgrade pip
-          echo "HERE"
-          ls -la ~/work/acg-etl/acg-etl
-          ls -la ~/work/acg-etl/acg-etl/requirements.txt
-
-          python3.7 -m pip install -r ~/work/acg-etl/acg-etl/requirements.txt  -t .
-          cd ~/acg-etl-lib
-          zip -r python.zip .
-          ls -la
-          pwd
-          mv python.zip ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload
-          ls -la ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload
-
-    - name: Terraform Apply
-      if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
-      run: |
-          cd iac-terraform/setup
-          # terraform destroy -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
-          terraform apply -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
-
-
+#      run: |
+#          python --version
+#          mkdir -p ~/acg-etl-lib/python/lib/python3.7/site-packages
+#          cd ~/acg-etl-lib/python/lib/python3.7/site-packages
+#          python3.7 -m pip install -r ~/work/acg-etl/acg-etl/requirements.txt  -t .
+#          zip -r python.zip .
+#          mv python.zip ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload
+#          ls -la ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload
+#
+#    - name: Terraform Apply
+#      if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
+#      run: |
+#          cd iac-terraform/setup
+#          # terraform destroy -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
+#          terraform apply -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
+#
+#
