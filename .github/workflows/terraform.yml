@@ -7,25 +7,25 @@ on:
   pull_request:
 
 jobs:
-#  build:
-#    runs-on: ubuntu-latest
-#    strategy:
-#      matrix:
-#        python-version: [3.7]
-#
-#    steps:
-#      - uses: actions/checkout@v2
-#      - name: Set up Python ${{ matrix.python-version }}
-#        uses: actions/setup-python@v2
-#        with:
-#          python-version: ${{ matrix.python-version }}
-#      - name: Install dependencies
-#        run: |
-#          python -m pip install --upgrade pip
-#          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-#      - name: Test with unittest
-#        run: |
-#          python -m unittest discover test
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Test with unittest
+        run: |
+          python -m unittest discover test
 
   terraform:
     name: 'Terraform'
@@ -71,58 +71,37 @@ jobs:
       run: terraform fmt -check
 
     # Generates an execution plan for Terraform
-#    - name: Terraform Plan
-#      id: plan
-#      run: |
-#          cd iac-terraform/setup
-#          terraform plan -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}'
     - name: Terraform Plan
       id: plan
-      uses: hashicorp/terraform-github-actions@master
-      with:
-        tf_actions_version: 0.8.0
-        tf_actions_subcommand: plan
-        tf_actions_comment: false
-        args: -out=example.plan
+      run: |
+          cd iac-terraform/setup
+          terraform plan -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}'
 
       # On push to master, build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
-    - name: Fastly Service Metadata
-      id: metadata
-      uses: hashicorp/terraform-github-actions@master
+
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v2
       with:
-        tf_plan_has_changes: ${{ steps.plan.outputs.tf_actions_plan_has_changes }}
+        # Semantic version range syntax or exact version of a Python version
+        python-version: '3.7.9'
 
-    - name: debug plan
-      # if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
+    - name: Package Libraries
+#      if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
       run: |
-          echo "steps output"
-          echo tf_plan_has_changes
-          echo "$tf_plan_has_changes"
-          echo $tf_plan_has_changes
+          python --version
+          mkdir -p ~/acg-etl-lib/python/lib/python3.7/site-packages
+          cd ~/acg-etl-lib/python/lib/python3.7/site-packages
+          python3.7 -m pip install -r ~/work/acg-etl/acg-etl/requirements.txt  -t .
+          zip -r python.zip .
+          mv python.zip ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload
+          ls -la ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload
 
-#    - name: Set up Python 3.x
-#      uses: actions/setup-python@v2
-#      with:
-#        # Semantic version range syntax or exact version of a Python version
-#        python-version: '3.7.9'
-#
-#    - name: Package Libraries
-#      if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
-#      run: |
-#          python --version
-#          mkdir -p ~/acg-etl-lib/python/lib/python3.7/site-packages
-#          cd ~/acg-etl-lib/python/lib/python3.7/site-packages
-#          python3.7 -m pip install -r ~/work/acg-etl/acg-etl/requirements.txt  -t .
-#          zip -r python.zip .
-#          mv python.zip ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload
-#          ls -la ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload
-#
-#    - name: Terraform Apply
-#      if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
-#      run: |
-#          cd iac-terraform/setup
-#          # terraform destroy -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
-#          terraform apply -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
-#
-#
+    - name: Terraform Apply
+      if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
+      run: |
+          cd iac-terraform/setup
+          # terraform destroy -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
+          terraform apply -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
+
+
