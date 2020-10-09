@@ -80,7 +80,7 @@ jobs:
       id: plan
       uses: hashicorp/terraform-github-actions@master
       with:
-        tf_actions_version: ${{ env.TF_VERSION }}
+        tf_actions_version: 0.8.0
         tf_actions_subcommand: plan
         tf_actions_comment: false
         args: -out=example.plan
