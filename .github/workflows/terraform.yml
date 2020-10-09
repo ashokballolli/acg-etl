@@ -100,7 +100,10 @@ jobs:
           mkdir -p ~/acg-etl-lib/python/lib/python3.7/site-packages
           cd ~/acg-etl-lib/python/lib/python3.7/site-packages
           # python -m pip install --upgrade pip
-          python3.7 -m pip install -r ${{env.project-home-directory}}/requirements.txt  -t .
+          echo "HERE"
+          ls -la ${{env.project-home-directory}}
+          ls -la ${{env.project-home-directory}}requirements.txt
+          python3.7 -m pip install -r ${{env.project-home-directory}}requirements.txt  -t .
           cd ~/acg-etl-lib
           zip -r python.zip .
           ls -la
