@@ -71,22 +71,35 @@ jobs:
       run: terraform fmt -check
 
     # Generates an execution plan for Terraform
+#    - name: Terraform Plan
+#      id: plan
+#      run: |
+#          cd iac-terraform/setup
+#          terraform plan -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}'
     - name: Terraform Plan
       id: plan
-      run: |
-          cd iac-terraform/setup
-          terraform plan -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}'
+      uses: hashicorp/terraform-github-actions@master
+      with:
+        tf_actions_version: ${{ env.TF_VERSION }}
+        tf_actions_subcommand: plan
+        tf_actions_comment: false
+        args: -out=example.plan
 
       # On push to master, build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
+    - name: Fastly Service Metadata
+      id: metadata
+      uses: fastly/fastly-terraform-metadata-action@master
+      with:
+        tf_plan_has_changes: ${{ steps.plan.outputs.tf_actions_plan_has_changes }}
+
     - name: debug plan
       # if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
       run: |
           echo "steps output"
-          var_s1 = steps.plan.outputs
-          var_s2 = steps.plan.outputs.tf_actions_plan_has_changes
-          echo "$var_s1"
-          echo "$var_s2"
+          echo tf_plan_has_changes
+          echo "$tf_plan_has_changes"
+          echo $tf_plan_has_changes
 
 #    - name: Set up Python 3.x
 #      uses: actions/setup-python@v2
