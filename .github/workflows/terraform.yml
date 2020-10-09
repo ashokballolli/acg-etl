@@ -93,16 +93,18 @@ jobs:
           pwd
           cd ${{env.project-home-directory}}
           pwd
-          
+
           pwd
           ls -la
           ls -la ~/
-          mkdir -p ~/ecg-etl/python/lib/python3.7/site-packages
-          cd ~/ecg-etl/python/lib/python3.7/site-packages
+          mkdir -p ~/acg-etl-lib/python/lib/python3.7/site-packages
+          cd ~/acg-etl-lib/python/lib/python3.7/site-packages
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then python3.7 -m pip install -r ~/requirements.txt  -t . ; fi
-          cd ~/ecg-etl
+          if [ -f ${{env.project-home-directory}}/requirements.txt ]; then python3.7 -m pip install -r ${{env.project-home-directory}}/requirements.txt  -t . ; fi
+          cd ~/acg-etl-lib
           zip -r python.zip .
+          ls -la
+          pwd
 
     - name: Terraform Apply
       if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
