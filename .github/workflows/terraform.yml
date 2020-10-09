@@ -30,7 +30,9 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        python-version: [3.7]
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
@@ -75,9 +77,26 @@ jobs:
 
       # On push to master, build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
+
+
+    - name: Package Libraries
+#      if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
+      with:
+        python-version: '3.7.9'
+      run: |
+        python --version
+        mkdir -p ~/ecg-etl/python/lib/python3.7/site-packages
+        cd ~/ecg-etl/python/lib/python3.7/site-packages
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then python3.7 -m pip install -r requirements.txt  -t .; fi
+        cd ~/ecg-etl
+        zip -r python.zip .
+
     - name: Terraform Apply
       if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
       run: |
           cd iac-terraform/setup
           # terraform destroy -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
           terraform apply -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
+
+
