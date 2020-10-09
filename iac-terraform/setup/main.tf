@@ -91,6 +91,6 @@ module "cloudwatch_rule_event" {
   target_name = module.lambda_function.function_name
   lambda_function_arn = module.lambda_function.function_arn
   lambda_function_name = module.lambda_function.function_name
-//  schedule_expression = "cron(0 1 * * ? *)"
-  schedule_expression = "rate(6 minutes)"
+  schedule_expression = "cron(0 1 * * ? *)"
+//  schedule_expression = "rate(6 minutes)"
 }
