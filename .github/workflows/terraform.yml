@@ -103,8 +103,8 @@ jobs:
           echo "HERE"
           ls -la ~/work/acg-etl/acg-etl
           ls -la ~/work/acg-etl/acg-etl/requirements.txt
-          ls -la ${{env.project-home-directory}}requirements.txt
-          python3.7 -m pip install -r ${{env.project-home-directory}}requirements.txt  -t .
+          
+          python3.7 -m pip install -r ~/work/acg-etl/acg-etl/requirements.txt  -t .
           cd ~/acg-etl-lib
           zip -r python.zip .
           ls -la
