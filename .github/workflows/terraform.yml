@@ -85,8 +85,8 @@ jobs:
           echo "steps output"
           var_s1 = steps.plan.outputs
           var_s2 = steps.plan.outputs.tf_actions_plan_has_changes
-          echo "var_s1"
-          echo "var_s2"
+          echo "$var_s1"
+          echo "$var_s2"
 
 #    - name: Set up Python 3.x
 #      uses: actions/setup-python@v2
