@@ -83,15 +83,18 @@ jobs:
       with:
         # Semantic version range syntax or exact version of a Python version
         python-version: '3.7.9'
-        
+
     - name: Package Libraries
 #      if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
       run: |
           python --version
+          pwd
+          ls -la
+          ls -la ~/
           mkdir -p ~/ecg-etl/python/lib/python3.7/site-packages
           cd ~/ecg-etl/python/lib/python3.7/site-packages
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then python3.7 -m pip install -r requirements.txt  -t .; fi
+          if [ -f requirements.txt ]; then python3.7 -m pip install -r ~/requirements.txt  -t . ; fi
           cd ~/ecg-etl
           zip -r python.zip .
 
