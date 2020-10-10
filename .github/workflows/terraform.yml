@@ -38,7 +38,6 @@ jobs:
 
       - name: Package App
 #        if: steps.app_test.outputs.tf_actions_plan_has_changes == 'true'
-        uses: hashicorp/terraform-github-actions@master
         run: |
           ls -la ./iac-terraform/setup/files_to_upload/
           zip -r acg-etl.zip . -x ".*" "iac-terraform/*"
