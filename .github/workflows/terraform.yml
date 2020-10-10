@@ -9,7 +9,6 @@ on:
 env:
   tf_version: '0.13.4'
   tf_working_dir: './iac-terraform/setup'
-  app_working_dir: './'
   project: 'acg-etl'
   aws_region: 'eu-central-1'
 
@@ -35,13 +34,6 @@ jobs:
         id: app_test
         run: |
           python -m unittest discover test
-
-      - name: 'Package App'
-        run: |
-          ls -la ./iac-terraform/setup/files_to_upload/
-          zip -r acg-etl.zip . -x ".*" "iac-terraform/*"
-          mv acg-etl.zip ./iac-terraform/setup/files_to_upload/
-          ls -la ./iac-terraform/setup/files_to_upload/
 
   terraform:
     name: 'Terraform'
@@ -116,6 +108,13 @@ jobs:
           ls -la ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload/
           ls -la ${{ env.app_working_dir }}
           ls -la ${{ env.app_working_dir }}/files_to_upload/
+
+      - name: 'Package App'
+        run: |
+          cd ~/work/acg-etl/acg-etl/
+          zip -r acg-etl.zip . -x ".*" "iac-terraform/*"
+          mv acg-etl.zip ./iac-terraform/setup/files_to_upload/
+          ls -la ./iac-terraform/setup/files_to_upload/
 
       - name: 'Terraform Apply'
         if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
