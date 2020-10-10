@@ -3,8 +3,17 @@ name: 'Terraform'
 on:
   push:
     branches:
-    - master
+      - master
   pull_request:
+
+env:
+  tf_version: 'latest'
+  app_working_dir: '~/work/acg-etl/acg-etl/'
+  tf_working_dir: ${{ env.app_working_dir }}'iac-terraform/setup'
+  env: 'dev'
+  project: 'mamip'
+  aws_region: 'eu-central-1'
+  artifacts_bucket: 'mamip-artifacts'
 
 jobs:
   build:
@@ -41,54 +50,57 @@ jobs:
         shell: bash
 
     steps:
-    # Checkout the repository to the GitHub Actions runner
-    - name: Checkout
-      uses: actions/checkout@v2
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Setup AWS Credentials
-      run: |
-        # Setup the credentials in the workspace because everything in terraform is
-        # driven off profiles
-        mkdir -p ~/.aws
-        echo "[default]" > ~/.aws/credentials
-        echo "aws_access_key_id = ${{ secrets.AWS_ACCESS_KEY_ID }}" >> ~/.aws/credentials
-        echo "aws_secret_access_key = ${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.aws/credentials
+      - name: AWS IAM Assume Role
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.REGION }}
+          role-to-assume: ${{ secrets.ROLE_TO_ASSUME }}
+          role-duration-seconds: 1200
+          role-session-name: GH-Actions-${{ env.project }}
 
 
-    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-      with:
-        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      - name: 'Terraform Init'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tf_actions_subcommand: 'init'
+          tf_actions_working_dir: ${{ env.tf_working_dir }}
+          tf_actions_comment: false
 
-    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Terraform Init
-      run: |
-          cd iac-terraform/setup
-          terraform init
-    # Checks that all Terraform configuration files adhere to a canonical format
-    - name: Terraform Format
-      run: terraform fmt -check
+      - name: 'Terraform Validate'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tf_actions_subcommand: 'validate'
+          tf_actions_working_dir: ${{ env.tf_working_dir }}
+          tf_actions_comment: false
 
-    # Generates an execution plan for Terraform
-    - name: Terraform Plan
-      id: plan
-      run: |
+
+      # Generates an execution plan for Terraform
+      - name: Terraform Plan
+        id: plan
+        run: |
           cd iac-terraform/setup
           terraform plan -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}'
 
-      # On push to master, build or change infrastructure according to Terraform configuration files
-      # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
+        # On push to master, build or change infrastructure according to Terraform configuration files
+        # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
 
-    - name: Set up Python 3.x
-      uses: actions/setup-python@v2
-      with:
-        # Semantic version range syntax or exact version of a Python version
-        python-version: '3.7.9'
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
+        with:
+          # Semantic version range syntax or exact version of a Python version
+          python-version: '3.7.9'
 
-    - name: Package Libraries
-      #if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
-      run: |
+      - name: Package Libraries
+        #if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
+        run: |
           python --version
           mkdir -p ~/acg-etl-lib/python/lib/python3.7/site-packages
           cd ~/acg-etl-lib/python/lib/python3.7/site-packages
@@ -97,9 +109,9 @@ jobs:
           mv python.zip ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload
           ls -la ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload
 
-    - name: Terraform Apply
-      #if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
-      run: |
+      - name: Terraform Apply
+        #if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
+        run: |
           cd iac-terraform/setup
           # terraform destroy -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
           terraform apply -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
