@@ -112,8 +112,8 @@ jobs:
           cd ~/acg-etl-lib/python/lib/python3.7/site-packages
           python3.7 -m pip install -r ~/work/acg-etl/acg-etl/requirements.txt  -t .
           zip -r python.zip .
-          mv python.zip ~/work/acg-etl/acg-etl/files_to_upload/
-          ls -la ~/work/acg-etl/acg-etl/files_to_upload/
+          mv python.zip ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload/
+          ls -la ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload/
           ls -la ${{ env.app_working_dir }}
           ls -la ${{ env.app_working_dir }}/files_to_upload/
 
