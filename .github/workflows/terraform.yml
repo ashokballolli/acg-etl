@@ -62,72 +62,73 @@ jobs:
           role-duration-seconds: 1200
           role-session-name: GH-Actions-${{ env.project }}
 
-#
-#      - name: 'Terraform Init'
-#        uses: hashicorp/terraform-github-actions@master
-#        with:
-#          tf_actions_version: ${{ env.tf_version }}
-#          tf_actions_subcommand: 'init'
-#          tf_actions_working_dir: ${{ env.tf_working_dir }}
-#          tf_actions_comment: false
-#
-#      - name: 'Terraform Validate'
-#        uses: hashicorp/terraform-github-actions@master
-#        with:
-#          tf_actions_version: ${{ env.tf_version }}
-#          tf_actions_subcommand: 'validate'
-#          tf_actions_working_dir: ${{ env.tf_working_dir }}
-#          tf_actions_comment: false
-#
-#
-#      - name: 'Terraform Plan'
-#        id: plan
-#        uses: hashicorp/terraform-github-actions@master
-#        with:
-#          tf_actions_version: ${{ env.tf_version }}
-#          tf_actions_subcommand: 'plan'
-#          tf_actions_working_dir: ${{ env.tf_working_dir }}
-#          tf_actions_comment: false
-#          args: '-var="rds_username=${{ secrets.RDS_USERNAME }}" -var="rds_password=${{ secrets.RDS_PASSWORD }}"'
-#
-#
-#      - name: 'Set up Python 3.x'
-#        uses: actions/setup-python@v2
-#        with:
-#          python-version: '3.7.9'
-#
-#      - name: 'Package Libraries'
-#        if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
-#        run: |
-#          python --version
-#          mkdir -p ~/acg-etl-lib/python/lib/python3.7/site-packages
-#          cd ~/acg-etl-lib/python/lib/python3.7/site-packages
-#          python3.7 -m pip install -r ~/work/acg-etl/acg-etl/requirements.txt  -t .
-#          zip -r python.zip .
-#          mv python.zip ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload/
-#          ls -la ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload/
-#
-#      - name: 'Package App'
-#        run: |
-#          cd ~/work/acg-etl/acg-etl/
-#          zip -r acg-etl.zip . -x ".*" "iac-terraform/*"
-#          mv acg-etl.zip ./iac-terraform/setup/files_to_upload/
-#          ls -la ./iac-terraform/setup/files_to_upload/
-#
-#      - name: 'Terraform Apply'
-#        if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
-#        uses: hashicorp/terraform-github-actions@master
-#        with:
-#          tf_actions_version: ${{ env.tf_version }}
-#          tf_actions_subcommand: 'apply'
-#          tf_actions_working_dir: ${{ env.tf_working_dir }}
-#          tf_actions_comment: false
-#          args: '-var="rds_username=${{ secrets.RDS_USERNAME }}" -var="rds_password=${{ secrets.RDS_PASSWORD }}"'
-      - name: 'Terraform Destroy'
+
+      - name: 'Terraform Init'
         uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ env.tf_version }}
-          tf_actions_subcommand: 'destroy'
+          tf_actions_subcommand: 'init'
+          tf_actions_working_dir: ${{ env.tf_working_dir }}
+          tf_actions_comment: false
+
+      - name: 'Terraform Validate'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tf_actions_subcommand: 'validate'
+          tf_actions_working_dir: ${{ env.tf_working_dir }}
+          tf_actions_comment: false
+
+
+      - name: 'Terraform Plan'
+        id: plan
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tf_actions_subcommand: 'plan'
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: false
           args: '-var="rds_username=${{ secrets.RDS_USERNAME }}" -var="rds_password=${{ secrets.RDS_PASSWORD }}"'
+
+
+      - name: 'Set up Python 3.x'
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7.9'
+
+      - name: 'Package Libraries'
+        if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
+        run: |
+          python --version
+          mkdir -p ~/acg-etl-lib/python/lib/python3.7/site-packages
+          cd ~/acg-etl-lib/python/lib/python3.7/site-packages
+          python3.7 -m pip install -r ~/work/acg-etl/acg-etl/requirements.txt  -t .
+          zip -r python.zip .
+          mv python.zip ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload/
+          ls -la ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload/
+
+      - name: 'Package App'
+        run: |
+          cd ~/work/acg-etl/acg-etl/
+          zip -r acg-etl.zip . -x ".*" "iac-terraform/*"
+          mv acg-etl.zip ./iac-terraform/setup/files_to_upload/
+          ls -la ./iac-terraform/setup/files_to_upload/
+
+      - name: 'Terraform Apply'
+        if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tf_actions_subcommand: 'apply'
+          tf_actions_working_dir: ${{ env.tf_working_dir }}
+          tf_actions_comment: false
+          args: '-var="rds_username=${{ secrets.RDS_USERNAME }}" -var="rds_password=${{ secrets.RDS_PASSWORD }}"'
+
+#      - name: 'Terraform Destroy'
+#        uses: hashicorp/terraform-github-actions@master
+#        with:
+#          tf_actions_version: ${{ env.tf_version }}
+#          tf_actions_subcommand: 'destroy'
+#          tf_actions_working_dir: ${{ env.tf_working_dir }}
+#          tf_actions_comment: false
+#          args: '-var="rds_username=${{ secrets.RDS_USERNAME }}" -var="rds_password=${{ secrets.RDS_PASSWORD }}"'
