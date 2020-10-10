@@ -96,29 +96,29 @@ jobs:
           tf_actions_subcommand: 'plan'
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: false
-          args: '-var="rds_username=${{ secrets.RDS_USERNAME }}" -var="rds_password=${{ secrets.RDS_PASSWORD }}" -var="email_addresses=[${{ env.email_addresses }}]"'
+          args: '-var="rds_username=${{ secrets.RDS_USERNAME }}" -var="rds_password=${{ secrets.RDS_PASSWORD }}" -var="email_addresses=["${{ env.email_addresses }}"]"'
 
 
         # On push to master, build or change infrastructure according to Terraform configuration files
         # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
 
-      - name: Set up Python 3.x
-        uses: actions/setup-python@v2
-        with:
-          # Semantic version range syntax or exact version of a Python version
-          python-version: '3.7.9'
+#      - name: Set up Python 3.x
+#        uses: actions/setup-python@v2
+#        with:
+#          # Semantic version range syntax or exact version of a Python version
+#          python-version: '3.7.9'
 
-      - name: Package Libraries
-        #if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
-        run: |
-          python --version
-          mkdir -p ~/acg-etl-lib/python/lib/python3.7/site-packages
-          cd ~/acg-etl-lib/python/lib/python3.7/site-packages
-          python3.7 -m pip install -r ~/work/acg-etl/acg-etl/requirements.txt  -t .
-          zip -r python.zip .
-          mkdir -p ~/files_to_upload
-          mv python.zip ~/files_to_upload
-          ls -la ~/files_to_upload
+#      - name: Package Libraries
+#        #if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
+#        run: |
+#          python --version
+#          mkdir -p ~/acg-etl-lib/python/lib/python3.7/site-packages
+#          cd ~/acg-etl-lib/python/lib/python3.7/site-packages
+#          python3.7 -m pip install -r ~/work/acg-etl/acg-etl/requirements.txt  -t .
+#          zip -r python.zip .
+#          mkdir -p ~/files_to_upload
+#          mv python.zip ~/files_to_upload
+#          ls -la ~/files_to_upload
 
 #      - name: Terraform Apply
 #        #if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
