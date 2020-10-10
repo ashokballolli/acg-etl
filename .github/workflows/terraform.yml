@@ -9,6 +9,7 @@ on:
 env:
   tf_version: '0.13.4'
   tf_working_dir: './iac-terraform/setup'
+  app_working_dir: './'
   project: 'acg-etl'
   aws_region: 'eu-central-1'
 
@@ -111,9 +112,10 @@ jobs:
           cd ~/acg-etl-lib/python/lib/python3.7/site-packages
           python3.7 -m pip install -r ~/work/acg-etl/acg-etl/requirements.txt  -t .
           zip -r python.zip .
-          mkdir -p ~/files_to_upload
-          mv python.zip ~/files_to_upload
-          ls -la ~/files_to_upload
+          mv python.zip ~/work/acg-etl/acg-etl/files_to_upload/
+          ls -la ~/work/acg-etl/acg-etl/files_to_upload/
+          ls -la ${{ env.app_working_dir }}
+          ls -la ${{ env.app_working_dir }}/files_to_upload/
 
       - name: 'Terraform Apply'
         if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
