@@ -10,7 +10,7 @@ variable "display_name" {
 }
 
 variable "email_addresses" {
-  type        = list(string)
+  type        = string
   description = "Email address to send notifications to"
 }
 
