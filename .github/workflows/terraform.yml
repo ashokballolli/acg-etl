@@ -106,8 +106,6 @@ jobs:
           zip -r python.zip .
           mv python.zip ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload/
           ls -la ~/work/acg-etl/acg-etl/iac-terraform/setup/files_to_upload/
-          ls -la ${{ env.app_working_dir }}
-          ls -la ${{ env.app_working_dir }}/files_to_upload/
 
       - name: 'Package App'
         run: |
