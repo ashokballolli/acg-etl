@@ -47,7 +47,7 @@ module "s3_upload" {
   region = "eu-central-1"
   bucket = module.s3_create_bucket.s3_bucket
   acl = "public-read"
-  upload_files_path = "~/files_to_upload/"
+  upload_files_path = "./files_to_upload/"
   depends_on = [
     module.s3_create_bucket]
 }
