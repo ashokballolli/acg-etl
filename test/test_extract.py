@@ -30,6 +30,8 @@ class TestExtract(unittest.TestCase):
             df_nyt_data, df_jh_data = extract_covid_data(self._test_covid_nyt_data, "www.column.name")
             print(df_jh_data.head())
 
+    def test_which_fails(self):
+        self.assertTrue(False)
 
 if __name__ == '__main__':
     unittest.main()
