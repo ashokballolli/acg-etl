@@ -12,7 +12,7 @@ env:
   project: 'acg-etl'
   aws_region: 'eu-central-1'
   artifacts_bucket: 'mamip-artifacts'
-  email_addresses: ["ballolliashok@gmail.com"]
+  email_addresses: "ballolliashok@gmail.com"
 
 jobs:
 #  build:
@@ -96,7 +96,7 @@ jobs:
           tf_actions_subcommand: 'plan'
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: false
-          args: '-var="rds_username=${{ secrets.RDS_USERNAME }}" -var="rds_password=${{ secrets.RDS_PASSWORD }}" -var="email_addresses=${{ env.email_addresses }}"'
+          args: '-var="rds_username=${{ secrets.RDS_USERNAME }}" -var="rds_password=${{ secrets.RDS_PASSWORD }}" -var="email_addresses=[${{ env.email_addresses }}]"'
 
 
         # On push to master, build or change infrastructure according to Terraform configuration files
@@ -136,4 +136,4 @@ jobs:
           tf_actions_subcommand: 'apply'
           tf_actions_working_dir: ${{ env.tf_working_dir }}
           tf_actions_comment: false
-          args: '-var="rds_username=${{ secrets.RDS_USERNAME }}" -var="rds_password=${{ secrets.RDS_PASSWORD }}"  -var="email_addresses=${{ env.email_addresses }}"'
+          args: '-var="rds_username=${{ secrets.RDS_USERNAME }}" -var="rds_password=${{ secrets.RDS_PASSWORD }}"  -var="email_addresses=[${{ env.email_addresses }}]"'
