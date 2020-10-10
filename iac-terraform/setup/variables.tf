@@ -11,4 +11,5 @@ variable "rds_username" {
 variable "email_addresses" {
   type        = list(string)
   description = "Email address to send notifications to"
+  default = ["ballolliashok@gmail.com"]
 }

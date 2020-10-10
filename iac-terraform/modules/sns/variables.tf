@@ -12,6 +12,7 @@ variable "display_name" {
 variable "email_addresses" {
   type        = list(string)
   description = "Email address to send notifications to"
+  default = ["ballolliashok@gmail.com"]
 }
 
 variable "protocol" {
