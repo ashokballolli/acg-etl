@@ -106,7 +106,6 @@ jobs:
 
       - name: Package Libraries
         if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
-        uses: hashicorp/terraform-github-actions@master
         run: |
           python --version
           mkdir -p ~/acg-etl-lib/python/lib/python3.7/site-packages
