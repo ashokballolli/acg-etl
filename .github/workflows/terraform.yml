@@ -8,7 +8,7 @@ on:
 
 env:
   tf_version: 'latest'
-  tf_working_dir: '~/work/acg-etl/acg-etl/iac-terraform/setup'
+  tf_working_dir: './iac-terraform/setup'
   project: 'acg-etl'
   aws_region: 'eu-central-1'
   artifacts_bucket: 'mamip-artifacts'
