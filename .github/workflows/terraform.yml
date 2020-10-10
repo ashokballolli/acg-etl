@@ -10,7 +10,6 @@ env:
   tf_version: 'latest'
   app_working_dir: '~/work/acg-etl/acg-etl/'
   tf_working_dir: ${{ env.app_working_dir }}'iac-terraform/setup'
-  env: 'dev'
   project: 'mamip'
   aws_region: 'eu-central-1'
   artifacts_bucket: 'mamip-artifacts'
