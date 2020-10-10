@@ -81,11 +81,11 @@ jobs:
 
 
       # Generates an execution plan for Terraform
-      - name: Terraform Plan
-        id: plan
-        run: |
-          cd iac-terraform/setup
-          terraform plan -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}'
+#      - name: Terraform Plan
+#        id: plan
+#        run: |
+#          cd iac-terraform/setup
+#          terraform plan -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}'
 
       - name: 'Terraform Plan'
         id: plan
