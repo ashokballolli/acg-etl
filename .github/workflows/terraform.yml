@@ -87,6 +87,17 @@ jobs:
           cd iac-terraform/setup
           terraform plan -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}'
 
+      - name: 'Terraform Plan'
+        id: plan
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tf_actions_subcommand: 'plan'
+          tf_actions_working_dir: ${{ env.tf_working_dir }}
+          tf_actions_comment: false
+          args: '-var="rds_username=${{ secrets.RDS_USERNAME }}" -var="rds_password=${{ secrets.RDS_PASSWORD }}" -var="email_addresses=${{ secrets.EMAIL_ADDRESSES }}"'
+
+
         # On push to master, build or change infrastructure according to Terraform configuration files
         # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
 
@@ -108,11 +119,20 @@ jobs:
           mv python.zip ~/files_to_upload
           ls -la ~/files_to_upload
 
-      - name: Terraform Apply
-        #if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
-        run: |
-          cd iac-terraform/setup
-          # terraform destroy -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
-          terraform apply -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
+#      - name: Terraform Apply
+#        #if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
+#        run: |
+#          cd iac-terraform/setup
+#          # terraform destroy -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
+#          terraform apply -var='rds_username=${{ secrets.RDS_USERNAME }}' -var='rds_password=${{ secrets.RDS_PASSWORD }}' -var='email_addresses=${{ secrets.EMAIL_ADDRESSES }}' -auto-approve
+#
 
-
+      - name: 'Terraform Apply'
+        if: steps.plan.outputs.tf_actions_plan_has_changes == 'true'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tf_actions_subcommand: 'apply'
+          tf_actions_working_dir: ${{ env.tf_working_dir }}
+          tf_actions_comment: false
+          args: '-var="rds_username=${{ secrets.RDS_USERNAME }}" -var="rds_password=${{ secrets.RDS_PASSWORD }}" -var="email_addresses=${{ secrets.EMAIL_ADDRESSES }}"'
