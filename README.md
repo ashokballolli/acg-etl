@@ -1,6 +1,7 @@
 # CloudGuruChallenge - Event-Driven Python on AWS
 
 
+
 [![Actions Status](https://github.com/ashokballolli/acg-etl/workflows/Terraform/badge.svg)](https://github.com/ashokballolli/acg-etl/actions)
 
 I came across #CloudGuruChallenge through one of my LinkedIn connections. The challenge is to create an event-driven ETL processing pipeline for COVID-19 data using python and AWS services.
